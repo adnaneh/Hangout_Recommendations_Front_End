@@ -17,7 +17,8 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "resolveJsonModule": true // to read json file locally
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

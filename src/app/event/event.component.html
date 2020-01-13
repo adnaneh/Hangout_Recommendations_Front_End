@@ -1,0 +1,17 @@
+<nav class='btn-container'>
+    <a class='btn-gradient blue small' (click)="showEvents()">Refresh</a>
+    <a class='btn-gradient cyan small' routerLink="./login">Sign up</a>
+</nav>
+
+<div *ngIf="events">
+    <span *ngFor="let a of events['event']">
+        <a class="event-container" href="http://www.baidu.com">
+            <img class='event-img'
+                src="https://weezevent.com/wp-content/uploads/2019/01/12145054/organiser-soiree-1000x585.jpg" /><br />
+            <span class='event-date'>Date : {{a['date']}}</span><br />
+            <span class='event-title'> {{a['title']}}</span><br />
+            <span class='event-address'>{{a['address_street']}} , {{a['address_city']}}</span><br />
+            <br />
+        </a>
+    </span>
+</div>
