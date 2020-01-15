@@ -1,17 +1,38 @@
 <nav class='btn-container'>
-    <a class='btn-gradient blue small' (click)="showEvents()">Refresh</a>
-    <a class='btn-gradient cyan small' routerLink="./login">Sign up</a>
+    <button class='btn-gradient blue small' (click)="showEvents()">Refresh</button>
+    <a class='btn-gradient cyan small' routerLink="./login">Sign in</a>
 </nav>
 
-<div *ngIf="events">
-    <span *ngFor="let a of events['event']">
-        <a class="event-container" href="http://www.baidu.com">
-            <img class='event-img'
-                src="https://weezevent.com/wp-content/uploads/2019/01/12145054/organiser-soiree-1000x585.jpg" /><br />
-            <span class='event-date'>Date : {{a['date']}}</span><br />
-            <span class='event-title'> {{a['title']}}</span><br />
-            <span class='event-address'>{{a['address_street']}} , {{a['address_city']}}</span><br />
-            <br />
-        </a>
-    </span>
+<!--
+<div class="container">
+    <div class="row row-cols-md-4" *ngIf="events">
+        <div class="col" *ngFor="let a of events['event'];let i=index">
+            <div class="thumbnail" *ngIf="i < 4 ">
+                <img class='event-img'
+                    src="https://weezevent.com/wp-content/uploads/2019/01/12145054/organiser-soiree-1000x585.jpg" />
+                <div class="caption">
+                    {{i+1}}
+                    <p class='event-date'>Date : {{a['date']}}</p>
+                    <p class='event-title'> {{a['title']}}</p>
+                    <p class='event-address'>{{a['address_street']}} , {{a['address_city']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<div class="row offset-sm-2 row-cols-md-5">
+    <div class="col" *ngFor="let e of events['event']">
+        <div class="card">
+            <img src="https://weezevent.com/wp-content/uploads/2019/01/12145054/organiser-soiree-1000x585.jpg"
+                class="card-img-top" alt="cover image of the event">
+            <div class="card-body">
+                <p class="card-text">{{e['date']}}</p>
+                <h5 class="card-title">{{e['title']}}</h5>
+                <p class='card-text'><small class="text-muted">{{e['address_street']}} , {{e['address_city']}}</small>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>

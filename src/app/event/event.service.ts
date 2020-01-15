@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import '../assets'
 import { catchError, retry } from 'rxjs/operators';
 
 export interface Event {

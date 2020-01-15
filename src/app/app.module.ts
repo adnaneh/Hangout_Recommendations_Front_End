@@ -7,13 +7,16 @@ import { AppComponent } from './app.component';
 import { EventComponent } from './event/event.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
-
+import { IconsComponent } from './icons/icons.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventComponent,
-    LoginComponent
+    LoginComponent,
+    IconsComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +25,7 @@ import { RouterModule } from '@angular/router';
     RouterModule.forRoot([
       { path: '', component: EventComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'icon', component: IconsComponent }
     ])
   ],
   providers: [],

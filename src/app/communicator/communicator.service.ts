@@ -20,14 +20,18 @@ export class CommunicatorService {
 
   constructor(private http: HttpClient) { }
 
-  serverUrl = 'http://138.195.247.66:8080/';
-  eventsUrl = 'api/v1.0/Events';
-  loginUrl = 'api/v1.0/Users/login';
+  url_root = 'http://138.195.57.172:8080';
+  url_api = '/api/v1.0';
+  serverUrl = this.url_root + this.url_api;
+  //serverUrl = 'localhost:4200/user';
+  eventsUrl = '/Events';
+  loginUrl = '/Users/signup';
   authUrl = '';   // authentification
 
   /** send user's login info to the server */
   loginUser(loginInfo: LoginInfo): Observable<LoginInfo> {
     return this.http.post<LoginInfo>(this.serverUrl + this.loginUrl, loginInfo, httpOptions);
+    //return this.http.put<LoginInfo>(this.serverUrl, loginInfo, httpOptions);
   }
 
   /** get status for the authentification */

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.communicatorService
-      .loginUser(this.loginInfo);
+      .loginUser(this.loginInfo).subscribe();
     console.log("sended");
   }
 

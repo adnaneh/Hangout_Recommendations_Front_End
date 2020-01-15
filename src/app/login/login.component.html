@@ -1,12 +1,16 @@
-<h2>Login</h2>
-<div>
-    <a>Username:</a>
-    <input />
-</div>
+<div id='logreg-forms'>
+    <form class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
 
-<div>
-    <a>Password:</a>
-    <input />
-</div>
+        <input type="email" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
 
-<button (click)='login()'>Log in</button>
+        <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+        <a href="#" id="forgot_pswd">Forgot password?</a>
+        <hr>
+        <!-- <p>Don't have an account!</p>  -->
+        <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up
+            New
+            Account</button>
+    </form>
+</div>
