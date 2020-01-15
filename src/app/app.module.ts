@@ -25,7 +25,7 @@ import { SignupComponent } from './signup/signup.component';
     RouterModule.forRoot([
       { path: '', component: EventComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'icon', component: IconsComponent }
+      { path: 'signup', component: SignupComponent }
     ])
   ],
   providers: [],
