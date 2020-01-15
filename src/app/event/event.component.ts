@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CommunicatorService } from '../communicator/communicator.service';
 import { Event, Events } from '../format';
-import data from '../assets/events';
+import data from '../assets/events_brief';
 
 @Component({
     selector: 'app-event',
@@ -25,7 +25,7 @@ export class EventComponent {
     }
 
 
-    showEvent(id: string) {
+    /*showEvent(id: string) {
         this.eventService.getEvent(id)
             .subscribe((data: Event) => this.event = {
                 event_id: data['event']['event_id'],
@@ -47,13 +47,11 @@ export class EventComponent {
                 latitude: data["event"]['latitude'],
                 longitude: data["event"]['longitude']
             });
-    }
+    }*/
 
     showEvents() {
         this.eventService.getEvents()
-            .subscribe((data: Events) => this.events = {
-                event: data['event']
-            });
+            .subscribe((data: Events) => this.events);
         //console.log(this.events)
     }
 

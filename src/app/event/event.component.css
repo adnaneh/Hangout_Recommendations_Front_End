@@ -29,6 +29,10 @@ a {
     height: auto;
 }
 
+img{
+	height:250px
+}
+
 nav {
   padding: 5px 10px;
   font-weight: bolder;

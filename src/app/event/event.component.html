@@ -3,32 +3,13 @@
     <a class='btn-gradient cyan small' routerLink="./login">Sign in</a>
 </nav>
 
-<!--
-<div class="container">
-    <div class="row row-cols-md-4" *ngIf="events">
-        <div class="col" *ngFor="let a of events['event'];let i=index">
-            <div class="thumbnail" *ngIf="i < 4 ">
-                <img class='event-img'
-                    src="https://weezevent.com/wp-content/uploads/2019/01/12145054/organiser-soiree-1000x585.jpg" />
-                <div class="caption">
-                    {{i+1}}
-                    <p class='event-date'>Date : {{a['date']}}</p>
-                    <p class='event-title'> {{a['title']}}</p>
-                    <p class='event-address'>{{a['address_street']}} , {{a['address_city']}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
--->
 
 <div class="row offset-sm-2 row-cols-md-5">
     <div class="col" *ngFor="let e of events['event']">
         <div class="card">
-            <img src="https://weezevent.com/wp-content/uploads/2019/01/12145054/organiser-soiree-1000x585.jpg"
-                class="card-img-top" alt="cover image of the event">
+            <img src="{{e['cover_url']}}" class=" card-img-top" alt="cover image of the event">
             <div class="card-body">
-                <p class="card-text">{{e['date']}}</p>
+                <p class="card-text">{{e['nearest']}}</p>
                 <h5 class="card-title">{{e['title']}}</h5>
                 <p class='card-text'><small class="text-muted">{{e['address_street']}} , {{e['address_city']}}</small>
                 </p>
