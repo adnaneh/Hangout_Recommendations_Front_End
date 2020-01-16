@@ -4,8 +4,8 @@
 </nav>
 
 
-<div class="row offset-sm-2 row-cols-md-5">
-    <div class="col" *ngFor="let e of events['event']">
+<div class="row offset-sm-2 row-cols-md-4 row-cols-sm-3  col-9">
+    <div class="col d-flex align-items-stretch mb-5" *ngFor="let e of events['event']">
         <div class="card" [routerLink]="['/eventdetail',e['event_id']]" routerLinkActive="router-link-active">
             <img src="{{e['cover_url']}}" class=" card-img-top" alt="cover image of the event">
             <div class="card-body">
