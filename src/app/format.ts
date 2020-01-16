@@ -1,5 +1,5 @@
 export interface LoginInfo {
-    user_id: string,
+    uname: string,
     pword: string
 }
 
@@ -22,12 +22,13 @@ export interface Event {
     facebook: string,
     website: string,
     cover_url: string,
-    latitude: number,
-    longitude: number,
-    occurrences: string,
+    latitude: any,
+    longitude: any,
+    occurrences: any,
     large_category: string,
     small_category: string
 }
+
 
 export interface Event_brief {
     event_id: number,

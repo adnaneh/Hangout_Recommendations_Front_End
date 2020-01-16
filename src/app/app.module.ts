@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { IconsComponent } from './icons/icons.component';
 import { SignupComponent } from './signup/signup.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { MessageService } from './communicator/message.service'
 
 @NgModule({
   declarations: [
@@ -28,10 +29,10 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
       { path: '', component: EventComponent },
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
-      { path: 'eventdetail', component: EventDetailComponent }
+      { path: 'eventdetail/:id', component: EventDetailComponent }
     ])
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

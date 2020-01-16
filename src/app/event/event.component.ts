@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 //import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { CommunicatorService } from '../communicator/communicator.service';
 import { Event, Events } from '../format';
 import data from '../assets/events_brief';
+import { EventDetailComponent } from '../event-detail/event-detail.component';
+import { MessageService } from '../communicator/message.service'
+import { Router } from '@angular/router'
 
 @Component({
     selector: 'app-event',
     templateUrl: './event.component.html',
     providers: [CommunicatorService],
     styles: ['.error {color:red;}'],
-    styleUrls: ['./event.component.css']
+    styleUrls: ['./event.component.css'],
+    inputs: ['inputsValue']
 })
 export class EventComponent {
     error: any;
@@ -20,7 +24,7 @@ export class EventComponent {
     events: Events;
 
 
-    constructor(private eventService: CommunicatorService) {
+    constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router) {
         this.events = data;
     }
 
@@ -56,9 +60,13 @@ export class EventComponent {
             });
     }
 
-
-    test(id: number) {
-        console.log(id);
+    /** route to the Event detail page */
+    viewEventDetail(id: number) {
+        console.log("homepage:" + id);
+        this.router.navigateByUrl('eventdetail');
+        console.log("before send message")
+        this.messageService.sendMessage('hello');
+        console.log("after send message")
     }
 
 }

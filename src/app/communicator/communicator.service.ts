@@ -42,10 +42,12 @@ export class CommunicatorService {
   getAuth() {
   }
 
+  /** request for several events  */
   getEvents() {
     return this.http.get(this.serverUrl + this.eventsUrl);
   }
 
+  /** request for the detail of a single events */
   getEvent(id: string) {
     return this.http.get(this.serverUrl + this.eventsUrl + id);
   }
