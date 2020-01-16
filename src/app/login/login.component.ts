@@ -30,7 +30,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.communicatorService
+      .loginUser(this.loginInfo).subscribe();
+    console.log("sended");
+  }
 
+  getResp() {
+    this.communicatorService
+      .getLoginUser().subscribe();
   }
 
 }

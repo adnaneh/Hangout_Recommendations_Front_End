@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { EventDetailComponent } from '../event-detail/event-detail.component';
 
 export interface Event {
   event_id: number,

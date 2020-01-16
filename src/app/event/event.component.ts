@@ -51,8 +51,14 @@ export class EventComponent {
 
     showEvents() {
         this.eventService.getEvents()
-            .subscribe((data: Events) => this.events);
-        //console.log(this.events)
+            .subscribe((data: Events) => this.events = {
+                event: data['event']
+            });
+    }
+
+
+    test(id: number) {
+        console.log(id);
     }
 
 }

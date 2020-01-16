@@ -6,7 +6,7 @@
 
 <div class="row offset-sm-2 row-cols-md-5">
     <div class="col" *ngFor="let e of events['event']">
-        <div class="card">
+        <div class="card" (click)="test(e['event_id'])">
             <img src="{{e['cover_url']}}" class=" card-img-top" alt="cover image of the event">
             <div class="card-body">
                 <p class="card-text">{{e['nearest']}}</p>
