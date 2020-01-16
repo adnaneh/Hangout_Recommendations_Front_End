@@ -2,12 +2,20 @@
 
 <!--<div [ngStyle]="{background: 'url(../../images/' + bg.jpg+')' }"></div>-->
 
-<body>
+<body style="min-height: 200px ;max-height: 400px;">
+    <div class="row">
+        <div class="col col-md-3">
+            1
+        </div>
+        <div class="col col-md-7">
+            2
+        </div>
 
-    <nav class='btn-container'>
-        <button type="button" class="btn btn-sunshine btn-lg outline" (click)="showEvents()">Refresh</button>
-        <a class="btn btn-sunshine btn-lg outline" routerLink="./login">Sign in</a>
-    </nav>
+        <div class=' col col-md-2'>
+            <a class="btn btn-sunshine btn-lg outline" routerLink="./login">Sign in</a>
+            <a type="button" class="btn btn-sunshine btn-lg outline">Sign up</a>
+        </div>
+    </div>
 </body>
 <br />
 
