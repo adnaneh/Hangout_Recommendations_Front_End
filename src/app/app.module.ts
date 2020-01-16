@@ -29,7 +29,8 @@ import { MessageService } from './communicator/message.service'
       { path: '', component: EventComponent },
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
-      { path: 'eventdetail/:id', component: EventDetailComponent }
+      { path: 'eventdetail/:id', component: EventDetailComponent },
+      { path: 'icons', component: IconsComponent }
     ])
   ],
   providers: [MessageService],

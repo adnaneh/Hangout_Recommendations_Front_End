@@ -1,5 +1,12 @@
 /* HeroesComponent's private CSS styles */
 
+body {
+  background:url(../../assets/images/bg.jpg) no-repeat;
+  padding-top:100px;
+  background-size:cover;
+}
+
+
 a {
     text-decoration:  none;
 }
