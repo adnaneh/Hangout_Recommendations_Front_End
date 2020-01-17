@@ -44,3 +44,38 @@ export interface Event_brief {
 export interface Events {
     event: Event_brief[]
 }
+
+/** Category */
+export const Category = {
+    "Animations": [
+        { "Atelier/Cours": 1 },
+        { "Autre animation": 2 },
+        { "Balade": 3 },
+        { "Conférence / Débat": 4 },
+        { "Lecture / Rencontre": 5 },
+        { "Loisirs / Jeux": 6 },
+        { "Stage": 7 },
+        { "Visite guidée": 8 }
+    ],
+    "Concerts": [
+        { "Autre concert": 9 },
+        { "Chanson français": 10 },
+        { "Classique": 11 },
+        { "Folk": 12 },
+        { "Hip-Hop": 13 },
+        { "Jazz": 14 },
+        { "Musiques du Monde":},
+        { "Pop / Variété":},
+        { "Reggae":},
+        { "Rock":},
+        { "Soul/Funk":},
+        { "Électronique":}
+    ],
+    "Événements": [
+        { "Autre événement": },
+        { "Brocante / Marché": },
+        { "Festival / Cycle": },
+        {}
+    ]
+
+};
