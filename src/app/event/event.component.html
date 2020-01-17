@@ -40,60 +40,17 @@
 <div class="row">
     <div class="col col-2">
         <mat-accordion>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
+            <mat-expansion-panel *ngFor="let i of large_category">
+                <mat-expansion-panel-header (click)="getEvents(i)">
                     <mat-panel-title class="font-weight-bold">
-                        Animations
-                    </mat-panel-title>
-                    <!--<mat-panel-description>
-                        Type your name and age
-                    </mat-panel-description>-->
-                </mat-expansion-panel-header>
-
-                <p>Atelier/Cours</p>
-                <p>Autre Animation</p>
-                <p>Balade</p>
-                <p>Conférence/Débat</p>
-
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title class="font-weight-bold">
-                        Concerts
-                    </mat-panel-title>
-                    <!--<mat-panel-description>
-                        Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                    </mat-panel-description>-->
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title class="font-weight-bold">
-                        Événements
+                        {{i}}
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title class="font-weight-bold">
-                        Expositions
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title class="font-weight-bold">
-                        Spectacles
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
+                <div *ngFor="let j of small_category[i]">
+                    <p class="btn-sidebar" (click)="getEvents(i,j)">
+                        {{j}}
+                    </p>
+                </div>
             </mat-expansion-panel>
         </mat-accordion>
     </div>
