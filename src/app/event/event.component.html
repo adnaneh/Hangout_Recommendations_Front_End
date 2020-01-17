@@ -2,47 +2,168 @@
 
 <!--<div [ngStyle]="{background: 'url(../../images/' + bg.jpg+')' }"></div>-->
 
-<body style="min-height: 200px ;max-height: 400px;">
-    <div class="row">
-        <div class="col col-md-3">
-            1
-        </div>
-
-        <div class="s01">
-            <form>
-                <div class="inner-form">
-                    <div class="input-field first-wrap">
-                        <input id="search" type="text" placeholder="What are you looking for?" />
-                    </div>
-                    <div class="input-field second-wrap">
-                        <input id="date" type="text" placeholder="date" />
-                    </div>
-                    <div class="input-field third-wrap">
-                        <button class="btn-search" type="button">Search</button>
-                    </div>
-                </div>
-            </form>
-        </div>
 
 
-        <div class=' col col-md-2'>
-            <a class="btn btn-sunshine btn-lg outline" routerLink="./login">Sign in</a>
-            <a type="button" class="btn btn-sunshine btn-lg outline">Sign up</a>
+<body style="min-height: 200px ;max-height: 300px;">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-3">
+                1
+            </div>
+
+            <div class="s01 col col-md-6">
+                <form>
+                    <div class="inner-form">
+                        <div class="input-field first-wrap">
+                            <input id="search" type="text" placeholder="What are you looking for?" />
+                        </div>
+                        <div class="input-field second-wrap">
+                            <input id="date" type="text" placeholder="date(optional)" />
+                        </div>
+                        <div class="input-field third-wrap">
+                            <button class="btn-search" type="button">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class=' col col-md-3'>
+                <a class="btn btn-sunshine btn-lg outline" routerLink="./login">Sign in</a>
+                <a type="button" class="btn btn-sunshine btn-lg outline">Sign up</a>
+            </div>
         </div>
     </div>
 </body>
 <br />
 
-<div class="row offset-sm-2 row-cols-md-4 row-cols-sm-3  col-9">
-    <div class="col d-flex align-items-stretch mb-5" *ngFor="let e of events['event']">
-        <div class="card" [routerLink]="['/eventdetail',e['event_id']]" routerLinkActive="router-link-active">
-            <img src="{{e['cover_url']}}" class=" card-img-top" alt="cover image of the event">
-            <div class="card-body">
-                <p class="card-text">{{e['nearest']}}</p>
-                <h5 class="card-title">{{e['title']}}</h5>
-                <p class='card-text'><small class="text-muted">{{e['address_street']}} ,
-                        {{e['address_city']}}</small>
-                </p>
+<div class="row">
+    <div class="col col-2">
+
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Animations
+                    </mat-panel-title>
+                    <!--<mat-panel-description>
+                        Type your name and age
+                    </mat-panel-description>-->
+                </mat-expansion-panel-header>
+                <p>Hello world</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Concerts
+                    </mat-panel-title>
+                    <!--<mat-panel-description>
+                        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                    </mat-panel-description>-->
+                </mat-expansion-panel-header>
+                <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Événements
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Expositions
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Spectacles
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+
+
+        </mat-accordion>
+
+
+
+
+        <!-- <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <h5>Categories</h5>
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                        <a data-toggle="collapse" data-target="collapse1" aria-expanded="false"
+                            class="dropdown-toggle">Mens
+                            Shoes</a>
+
+                    </li>
+
+                    <div id="collapse1" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. 3 wolf moon
+                            officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                            eiusmod. Brunch 3 wolf
+                            moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                            shoreditch et. Nihil anim
+                            keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad
+                            vegan excepteur
+                            butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                            nesciunt you probably
+                            haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+
+
+                    <li>
+                        <a data-toggle="collapse" data-target="collapse2" aria-expanded="false"
+                            class="dropdown-toggle">Mens
+                            Shoes</a>
+
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-target="collapse3" aria-expanded="false"
+                            class="dropdown-toggle">Accessories</a>
+
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-target="collapse4" aria-expanded="false"
+                            class="dropdown-toggle">Clothes</a>
+
+                    </li>
+                </ul>
+
+
+            </div>
+        </nav>-->
+
+
+    </div>
+    <div class="col col-10">
+        <div class="row  row-cols-md-4 row-cols-sm-3 ">
+            <div class="col d-flex align-items-stretch mb-5" *ngFor="let e of events['event']">
+                <div class="card" [routerLink]="['/eventdetail',e['event_id']]" routerLinkActive="router-link-active">
+                    <img src="{{e['cover_url']}}" class=" card-img-top" alt="cover image of the event">
+                    <div class="card-body">
+                        <p class="card-text">{{e['nearest']}}</p>
+                        <h5 class="card-title">{{e['title']}}</h5>
+                        <p class='card-text'><small class="text-muted">{{e['address_street']}} ,
+                                {{e['address_city']}}</small>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

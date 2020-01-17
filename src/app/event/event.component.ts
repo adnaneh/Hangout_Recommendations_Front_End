@@ -25,33 +25,10 @@ export class EventComponent {
 
 
     constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router) {
-        this.events = data;
+        this.events = data; // only for offline test
+        //this.showEvents();    //uncomment for online situation
     }
 
-
-    /*showEvent(id: string) {
-        this.eventService.getEvent(id)
-            .subscribe((data: Event) => this.event = {
-                event_id: data['event']['event_id'],
-                title: data["event"]['title'],
-                category: data["event"]['category'],
-                price: data["event"]['price'],
-                description: data["event"]['description'],
-                link: data["event"]['link'],
-                telephone: data["event"]['telephone'],
-                tags: data["event"]['tags'],
-                address_street: data["event"]['address_street'],
-                address_city: data["event"]['address_city'],
-                address_zipcode: data["event"]['address_zipcode'],
-                date: data["event"]['date'],
-                date_end: data["event"]['date_end'],
-                contact_mail: data["event"]['contact_mail'],
-                facebook: data["event"]['facebook'],
-                website: data["event"]['website'],
-                latitude: data["event"]['latitude'],
-                longitude: data["event"]['longitude']
-            });
-    }*/
 
     showEvents() {
         this.eventService.getEvents()
@@ -68,5 +45,21 @@ export class EventComponent {
         this.messageService.sendMessage('hello');
         console.log("after send message")
     }
+
+    public itemsList: Object[] = [
+        {
+            title: 'Collapsible Group Item #1',
+            description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.'
+        },
+        {
+            title: 'Collapsible Group Item #2',
+            description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.'
+        },
+        {
+            title: 'Collapsible Group Item #3',
+            description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.'
+        }
+    ];
+
 
 }
