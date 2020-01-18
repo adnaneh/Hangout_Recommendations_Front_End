@@ -1,5 +1,5 @@
 export interface LoginInfo {
-    uname: string,
+    unique_key: string,
     pword: string
 }
 

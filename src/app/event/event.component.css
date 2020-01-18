@@ -113,6 +113,7 @@ img{
 }
 .btn-sunshine.outline {
     border: 2px solid #F7B733;
+    margin-right: 10px;
     color: #F7B733;
 }
 .btn-sunshine.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
@@ -597,14 +598,14 @@ legend {
 }
 
 .s01 {
-  min-height: 100vh;
+  min-height: 15vh; /*1vh = 视野高度1%*/
   display: -ms-flexbox;
   display: flex;
 
   font-family: 'Poppins', sans-serif;
   background-size: cover;
   background-position: center center;
-  padding: 15px;
+  /*padding: 15px;*/
 }
 
 .s01 form {
@@ -621,7 +622,7 @@ legend {
 
 .s01 form .inner-form {
   background: rgba(0, 0, 0, 0.5);
-  padding: 50px 47px;
+  padding: 10px 10px;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
