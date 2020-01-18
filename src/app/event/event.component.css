@@ -1,8 +1,17 @@
+/* For event image cropping */
+.event-img {
+  object-fit: cover;
+
+  object-position: 50% 0;
+  object-position: 50% 1;
+  height: 200px;
+}
+
 /* HeroesComponent's private CSS styles */
 
-body {
+header {
   background:url(../../assets/images/bg.jpg) no-repeat;
-  padding-top:100px;
+  /*padding-top:100px;*/
   background-size:cover;
 }
 
