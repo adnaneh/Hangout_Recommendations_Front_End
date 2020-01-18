@@ -9,6 +9,7 @@ import { EventDetailComponent } from '../event-detail/event-detail.component';
 import { MessageService } from '../communicator/message.service';
 import { Router } from '@angular/router';
 import { Category } from '../format';
+import { ConstantPool } from '@angular/compiler';
 
 @Component({
     selector: 'app-event',
@@ -43,7 +44,7 @@ export class EventComponent {
     sendEventsRequest(events_id = null) {
         this.eventService.getEvents(events_id)
             // resp is of type 'HttpResponse<Events>' 
-            .subscribe((resp) => {
+            .subscribe(resp => {
                 // display its headers
                 const keys = resp.headers.keys();
                 this.headers = keys.map(key =>
@@ -51,7 +52,10 @@ export class EventComponent {
 
                 //access the body directly, which is typed as 'Events'
                 this.events = { ...resp.body };
-            });
+            }, // success path
+
+                error => this.error = error // error path
+            );
     }
 
     /* show events without indicating a specific category*/
