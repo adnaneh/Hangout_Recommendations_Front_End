@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { LoginInfo } from '../format';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { Events } from '../format'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -42,13 +43,13 @@ export class CommunicatorService {
   getAuth() {
   }
 
-  /** request for several events  */
-  getEvents(event_id: string | number = null) {
+  /** request for events  */
+  getEvents(event_id: string | number = null): Observable<HttpResponse<Events>> {
     if (event_id == null) {
-      return this.http.get(this.serverUrl + this.eventsUrl);
+      return this.http.get<Events>(this.serverUrl + this.eventsUrl, { observe: 'response' });
     } else {
-      console.log(this.serverUrl + this.eventsUrl + "/" + event_id);
-      return this.http.get(this.serverUrl + this.eventsUrl + "/" + event_id);
+      //console.log(this.serverUrl + this.eventsUrl + "/" + event_id);
+      return this.http.get<Events>(this.serverUrl + this.eventsUrl + "/" + event_id, { observe: 'response' });
     }
   }
 

@@ -35,33 +35,38 @@ export class EventComponent {
         this.large_category = Object.keys(this.category);
         this._initLargeCategoryIndex();
         this._initSmallCategory();
-        //console.log(this.large_category);
-        //this.showEvents();    //uncomment for online situation
+        this.showEvents();    //uncomment for online situation
 
+    }
+
+    /* send request for a list of events to the server */
+    sendEventsRequest(events_id = null) {
+        this.eventService.getEvents(events_id)
+            // resp is of type 'HttpResponse<Events>' 
+            .subscribe((resp) => {
+                // display its headers
+                const keys = resp.headers.keys();
+                this.headers = keys.map(key =>
+                    '${key}: ${resp.headers.get(key)}');
+
+                //access the body directly, which is typed as 'Events'
+                this.events = { ...resp.body };
+            });
     }
 
     /* show events without indicating a specific category*/
     showEvents() {
-        this.eventService.getEvents()
-            .subscribe((data: Events) => this.events = {
-                event: data['event']
-            });
+        this.sendEventsRequest();
     }
 
     /** get events from server by indicating a specific category */
     getEvents(i: string, j: string = "Null") {
         if (j == 'Null') {
             //console.log(this.large_category_index[i]);
-            this.eventService.getEvents(this.large_category_index[i])
-                .subscribe((data: Events) => this.events = {
-                    event: data['event']
-                });
+            this.sendEventsRequest(this.large_category_index[i]);
         } else {
             //console.log(this.category[i][j])
-            this.eventService.getEvents(this.category[i][j])
-                .subscribe((data: Events) => this.events = {
-                    event: data['event']
-                });
+            this.sendEventsRequest(this.category[i][j]);
         }
     }
 
