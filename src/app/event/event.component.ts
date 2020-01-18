@@ -40,7 +40,7 @@ export class EventComponent {
 
     }
 
-
+    /* show events without indicating a specific category*/
     showEvents() {
         this.eventService.getEvents()
             .subscribe((data: Events) => this.events = {
@@ -48,11 +48,20 @@ export class EventComponent {
             });
     }
 
+    /** get events from server by indicating a specific category */
     getEvents(i: string, j: string = "Null") {
         if (j == 'Null') {
-            console.log(this.large_category_index[i]);
+            //console.log(this.large_category_index[i]);
+            this.eventService.getEvents(this.large_category_index[i])
+                .subscribe((data: Events) => this.events = {
+                    event: data['event']
+                });
         } else {
-            console.log(this.category[i][j])
+            //console.log(this.category[i][j])
+            this.eventService.getEvents(this.category[i][j])
+                .subscribe((data: Events) => this.events = {
+                    event: data['event']
+                });
         }
     }
 

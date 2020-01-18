@@ -43,8 +43,13 @@ export class CommunicatorService {
   }
 
   /** request for several events  */
-  getEvents() {
-    return this.http.get(this.serverUrl + this.eventsUrl);
+  getEvents(event_id: string | number = null) {
+    if (event_id == null) {
+      return this.http.get(this.serverUrl + this.eventsUrl);
+    } else {
+      console.log(this.serverUrl + this.eventsUrl + "/" + event_id);
+      return this.http.get(this.serverUrl + this.eventsUrl + "/" + event_id);
+    }
   }
 
   /** request for the detail of a single events */
