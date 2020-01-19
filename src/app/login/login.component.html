@@ -1,25 +1,23 @@
-<button (click)="onSubmit()">sign in</button>
-<button (click)="getResp()">test</button>
-
-
-<!--<div id='logreg-forms'>
-    <form class="form-signin">
+<div id='logreg-forms'>
+    <form class="form-signin" #f="ngForm">
         <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
 
-        <input type="email" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="">
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <input type="email" class="form-control" placeholder="Username" required autofocus="autofocus" name="unique_key"
+            ngModel #unique_key="ngModel">
+        <input type="password" class="form-control" placeholder="Password" required name="pword" ngModel>
 
-        <button class="btn btn-success btn-block" type="submit" (click)="onSubmit()"><i class="fas fa-sign-in-alt"></i>
+        <button class="btn btn-success btn-block" type="submit" (click)="onSubmit(f)"><i class="fas fa-sign-in-alt"></i>
             Sign in</button>
         <a href="#" id="forgot_pswd">Forgot password?</a>
-        <hr>-->
-<!-- <p>Don't have an account!</p>  -->
-<!--      <button class="btn btn-primary btn-block" type="button" id="btn-signup" [routerLink]="['../signup']"
+        <hr>
+        <p>Don't have an account!</p>
+        <button class="btn btn-primary btn-block" type="button" id="btn-signup" [routerLink]="['../signup']"
             routerLinkActive="router-link-active"><i class="fas fa-user-plus"></i> Sign up
             New
             Account</button>
     </form>
 </div>
+
 
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
     id="bootstrap-css">
@@ -29,7 +27,7 @@
             Denied!</strong>
         Please provide valid authorization.
     </div>
-</div>-->
+</div>
 
 
 <!--<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
