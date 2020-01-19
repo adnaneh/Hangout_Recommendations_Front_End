@@ -4,16 +4,19 @@ import { LoginInfo } from '../format';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Events } from '../format'
+import { GlobalInfoService } from './global-info.service'
 
 
-
+/*
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json', //documentation: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types
     'Authorization': 'Made-in-China#!@$%?',
     'user_id': '-1'
   })
-};
+};*/
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +25,7 @@ const httpOptions = {
 @Injectable()
 export class CommunicatorService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private globalInfo: GlobalInfoService) { }
 
   readonly url_root = 'http://138.195.244.138:8080';
   readonly url_api = '/api/v1.0';
@@ -34,17 +37,13 @@ export class CommunicatorService {
 
   /** send user's login info to the server */
   loginUser(loginInfo: LoginInfo): Observable<LoginInfo> {
-    return this.http.post<LoginInfo>(this.serverUrl + this.loginUrl, loginInfo, httpOptions)
+    return this.http.post<LoginInfo>(this.serverUrl + this.loginUrl, loginInfo, { headers: this.globalInfo.headers })
       .pipe(
         retry(3),
         catchError(this.handleError)
       );
-
   }
 
-  getLoginUser() {
-    return this.http.get(this.serverUrl + this.loginUrl);
-  }
 
   /** get status for the authentification */
   getAuth() {
@@ -53,14 +52,14 @@ export class CommunicatorService {
   /** request for events  */
   getEvents(event_id: string | number = null): Observable<HttpResponse<Events>> {
     if (event_id == null) {
-      return this.http.get<Events>(this.serverUrl + this.eventsUrl, { headers: httpOptions['headers'], observe: 'response' })
+      return this.http.get<Events>(this.serverUrl + this.eventsUrl, { headers: this.globalInfo.headers, observe: 'response' })
         .pipe(
           retry(3), // 重复尝试最多3次
           catchError(this.handleError)  //then catch the error
         );
     } else {
       //console.log(this.serverUrl + this.eventsUrl + "/" + event_id);
-      return this.http.get<Events>(this.serverUrl + this.eventsUrl + "/Categories/" + event_id, { headers: httpOptions['headers'], observe: 'response' })
+      return this.http.get<Events>(this.serverUrl + this.eventsUrl + "/Categories/" + event_id, { headers: this.globalInfo.headers, observe: 'response' })
         .pipe(
           retry(3), // 重复尝试最多3次
           catchError(this.handleError)

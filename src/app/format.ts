@@ -3,6 +3,12 @@ export interface LoginInfo {
     pword: string
 }
 
+export interface LoginResp {
+    user_online: any,
+    state: boolean,
+    description: string | null
+}
+
 /** Struct of an event*/
 export interface Event {
     event_id: number,
