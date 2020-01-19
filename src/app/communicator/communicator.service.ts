@@ -10,7 +10,8 @@ import { Events } from '../format'
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json', //documentation: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types
-    'Authorization': 'my-auth-token'
+    'Authorization': 'Made-in-China#!@$%?',
+    'user_id': '-1'
   })
 };
 
@@ -52,7 +53,7 @@ export class CommunicatorService {
   /** request for events  */
   getEvents(event_id: string | number = null): Observable<HttpResponse<Events>> {
     if (event_id == null) {
-      return this.http.get<Events>(this.serverUrl + this.eventsUrl, { observe: 'response' })
+      return this.http.get<Events>(this.serverUrl + this.eventsUrl, { headers: httpOptions['headers'], observe: 'response' })
         .pipe(
           retry(3), // 重复尝试最多3次
           catchError(this.handleError)  //then catch the error
