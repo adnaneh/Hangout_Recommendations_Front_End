@@ -60,7 +60,7 @@ export class CommunicatorService {
         );
     } else {
       //console.log(this.serverUrl + this.eventsUrl + "/" + event_id);
-      return this.http.get<Events>(this.serverUrl + this.eventsUrl + "/Categories/" + event_id, { observe: 'response' })
+      return this.http.get<Events>(this.serverUrl + this.eventsUrl + "/Categories/" + event_id, { headers: httpOptions['headers'], observe: 'response' })
         .pipe(
           retry(3), // 重复尝试最多3次
           catchError(this.handleError)
