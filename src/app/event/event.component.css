@@ -36,9 +36,9 @@ img{
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 5px;
   font-weight: normal;
-  line-height: 1.42857143;
+  line-height: 1.2857143;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -52,6 +52,13 @@ img{
   border-radius: 4px;
   padding: 10px 16px;
 }
+
+.btn-sm{
+  cursor: pointer;
+}
+
+
+
 
 .btn-sidebar {
   display: inline-block;
@@ -117,8 +124,8 @@ img{
     color: #F7B733;
 }
 .btn-sunshine.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
-    color: #F7B733;
-    border-color: #F7B733;
+    color: rgb(245, 163, 0);
+    border-color: rgb(245, 163, 0);
 }
 .btn-sunshine.outline:active, .btn-primary.outline.active {
     border-color: #F7B733;

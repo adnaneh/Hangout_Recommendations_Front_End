@@ -12,14 +12,25 @@ export class LoginComponent implements OnInit {
 
   loginInfo: LoginInfo;
   loginForm: FormGroup;
+  loading = false;
+  submitted = false;
+  //returnUrl
+  response: string = '';
 
   constructor(private communicatorService: CommunicatorService) {
 
   }
 
+
+
+
+
+
+
+
   ngOnInit() {
     this.loginInfo = {
-      'uname': '1',
+      'unique_key': '1',
       'pword': 'hello password'
     }
   }
@@ -31,9 +42,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.communicatorService
-      .loginUser(this.loginInfo).subscribe();
-    console.log("sended");
-    console.log(this.loginInfo);
+      .loginUser(this.loginInfo).subscribe(resp => console.log(resp));
   }
 
   getResp() {

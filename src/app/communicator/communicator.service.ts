@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { LoginInfo } from '../format';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { HttpHeaders } from '@angular/common/http';
 import { Events } from '../format'
+
+
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json', //documentation: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types
     'Authorization': 'my-auth-token'
   })
 };
@@ -22,18 +23,22 @@ export class CommunicatorService {
 
   constructor(private http: HttpClient) { }
 
-  url_root = 'http://138.195.247.60:8080';
-  url_api = '/api/v1.0';
-  serverUrl = this.url_root + this.url_api;
-  //serverUrl = 'localhost:4200/user';
-  eventsUrl = '/Events';
-  loginUrl = '/Users/login';
-  authUrl = '';   // authentification
+  readonly url_root = 'http://138.195.244.138:8080';
+  readonly url_api = '/api/v1.0';
+  readonly serverUrl = this.url_root + this.url_api;
+  readonly eventsUrl = '/Events';
+  readonly loginUrl = '/Users/login';
+
+
 
   /** send user's login info to the server */
   loginUser(loginInfo: LoginInfo): Observable<LoginInfo> {
-    return this.http.post<LoginInfo>(this.serverUrl + this.loginUrl, loginInfo, httpOptions);
-    //return this.http.put<LoginInfo>(this.serverUrl, loginInfo, httpOptions);
+    return this.http.post<LoginInfo>(this.serverUrl + this.loginUrl, loginInfo, httpOptions)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+
   }
 
   getLoginUser() {
@@ -54,7 +59,7 @@ export class CommunicatorService {
         );
     } else {
       //console.log(this.serverUrl + this.eventsUrl + "/" + event_id);
-      return this.http.get<Events>(this.serverUrl + this.eventsUrl + "/" + event_id, { observe: 'response' })
+      return this.http.get<Events>(this.serverUrl + this.eventsUrl + "/Categories/" + event_id, { observe: 'response' })
         .pipe(
           retry(3), // 重复尝试最多3次
           catchError(this.handleError)
