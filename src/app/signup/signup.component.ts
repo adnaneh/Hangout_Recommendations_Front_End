@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { city_name } from '../format'
+
 
 @Component({
   selector: 'app-signup',
@@ -6,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  cities_name: string[];
 
-  constructor() { }
+
+  constructor() {
+    this.cities_name = city_name;
+  }
 
   ngOnInit() {
   }

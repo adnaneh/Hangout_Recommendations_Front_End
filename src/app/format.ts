@@ -5,7 +5,7 @@ export interface LoginInfo {
 
 export interface LoginResp {
     user_online: any,
-    state: boolean,
+    login_state: boolean,
     description: string | null
 }
 
@@ -116,3 +116,45 @@ export const Category = {
 
 
 };
+
+export const city_name = [
+    "Paris",
+    "Marseille",
+    "Lyon",
+    "Toulouse",
+    "Nice",
+    "Nantes",
+    "Strasbourg",
+    "Montpellier",
+    "Bordeaux",
+    "Lille",
+    "Rennes",
+    "Reims",
+    "Le Havre",
+    "Cergy - Pontoise",
+    "Saint - Étienne",
+    "Toulon",
+    "Angers",
+    "Grenoble",
+    "Dijon",
+    "Nîmes",
+    "Aix - en - Provence",
+    "Saint - Quentin - en - Yvelines",
+    "Brest",
+    "Le Mans",
+    "Amiens",
+    "Tours",
+    "Limoges",
+    "Clermont - Ferrand",
+    "Villeurbanne",
+    "Besançon",
+    "Orléans",
+    "Metz",
+    "Rouen",
+    "Mulhouse",
+    "Perpignan",
+    "Caen",
+    "Boulogne - Billancourt",
+    "Nancy",
+    "Cannes"
+]

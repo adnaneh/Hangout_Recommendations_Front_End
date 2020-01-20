@@ -32,20 +32,24 @@ export class LoginComponent implements OnInit {
   }
 
 
-
-  onSubmit(f: LoginInfo) {
-    this.login(f);
-    console.log(f);  // { first: '', last: '' }
+  /* Called by Login button*/
+  onSubmit(f: NgForm) {
+    this.login(f.value);
   }
 
+  /*  send login form to the server and recieve response*/
   login(f: LoginInfo) {
+    console.log(f)
     this.communicatorService.loginUser(f)
       .subscribe(resp => {
         this.loginResp = resp;
-        console.log(this.loginResp)
+        this.processLoginResp();
       });
+  }
 
-    if (this.loginResp['state'] == true) {
+  /* process the response from the server*/
+  processLoginResp() {
+    if (this.loginResp['login_state'] == true) {
       this.globalInfo.login(this.loginResp['user_online']);
       this.router.navigate(['']);
     } else {

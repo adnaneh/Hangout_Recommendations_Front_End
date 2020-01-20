@@ -14,6 +14,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { MessageService } from './communicator/message.service'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     MatExpansionModule,
     FormsModule,
+    NgbModule,
     RouterModule.forRoot([
       { path: '', component: EventComponent },
       { path: 'login', component: LoginComponent },
