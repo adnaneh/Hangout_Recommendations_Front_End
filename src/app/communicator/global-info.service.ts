@@ -6,8 +6,8 @@ import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angul
 })
 export class GlobalInfoService {
   headers: HttpHeaders;
-  login_state: boolean = true;
-  username: string | null = 'Tom';
+  login_state: boolean = false;
+  username: string | null = null;
 
   constructor() {
     this.headers = new HttpHeaders({
