@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { LoginInfo } from '../format';
+import { LoginInfo, Events, SignupInfo } from '../format';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Events } from '../format'
 import { GlobalInfoService } from './global-info.service'
 
 
@@ -32,7 +31,7 @@ export class CommunicatorService {
   readonly serverUrl = this.url_root + this.url_api;
   readonly eventsUrl = '/Events';
   readonly loginUrl = '/Users/login';
-
+  readonly signupUrl = '/Users/signup';
 
 
   /** send user's login info to the server */
@@ -45,8 +44,13 @@ export class CommunicatorService {
   }
 
 
-  /** get status for the authentification */
-  getAuth() {
+  /** Sign up */
+  sigupUser(signupInfo: any): Observable<SignupInfo> {
+    return this.http.post<any>(this.serverUrl + this.signupUrl, signupInfo, { headers: this.globalInfo.headers })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
   }
 
   /** request for events  */

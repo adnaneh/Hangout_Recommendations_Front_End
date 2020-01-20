@@ -14,22 +14,16 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginInfo: LoginInfo;
   loginForm: FormGroup;
-  loading = false;
-  submitted = false;
+
   //returnUrl
   response: string = '';
   loginResp: any;
-
+  error: boolean = false;
   constructor(private communicatorService: CommunicatorService, private globalInfo: GlobalInfoService, private router: Router) { }
 
 
 
-  ngOnInit() {
-    /*this.loginInfo = {
-      'unique_key': '1',
-      'pword': 'hello password'
-    }*/
-  }
+  ngOnInit() { }
 
 
   /* Called by Login button*/
@@ -39,18 +33,22 @@ export class LoginComponent implements OnInit {
 
   /*  send login form to the server and recieve response*/
   login(f: LoginInfo) {
-    console.log(f)
+    //console.log(f)
     this.communicatorService.loginUser(f)
       .subscribe(resp => {
         this.loginResp = resp;
-        this.processLoginResp();
-      });
+        this.processLoginResp(f.unique_key);
+      },
+        error => {
+          this.error = true;
+        }
+      );
   }
 
   /* process the response from the server*/
-  processLoginResp() {
+  processLoginResp(username: string) {
     if (this.loginResp['login_state'] == true) {
-      this.globalInfo.login(this.loginResp['user_online']);
+      this.globalInfo.login(this.loginResp['user_online'], username);
       this.router.navigate(['']);
     } else {
       console.log(this.loginResp['description']);

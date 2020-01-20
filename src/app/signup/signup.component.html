@@ -1,46 +1,50 @@
 <div class="container">
-
     <div class=" title-line">
         <span class="h3 mb-3 font-weight-normal tit"> Inscription</span>
     </div>
+
     <div id="logreg-forms">
-        <form class="form-signin" #f="ngForm">
+        <form [formGroup]="registerForm">
 
-            <p>Username<span class="subtitle">*</span>:</p>
-            <input type="text" class="form-control" placeholder="Choose a username" required autofocus="autofocus"
-                name="uname" ngModel #uname="ngModel">
-            <div class="register-hidden-group"></div>
+            <div class="form-group">
 
-            <label>Mot de passe<span class="subtitle">*</span>:</label>
-            <input type="password" class="form-control" placeholder="Password(我他妈也不知道写什么)" required name="pword1"
-                ngModel>
-            <div class="register-hidden-group"></div>
-
-            <label>Confimer le mot de passe<span class="subtitle">*</span>:</label>
-            <input type="password" class="form-control" placeholder="Confirm password(随便写写)" required name="pword2"
-                ngModel>
-            <div class="register-hidden-group"></div>
-
-            <label>Email<span class="subtitle">*</span>:</label>
-            <input type="email" class="form-control" placeholder="他妈的，留下email" required name="email" ngModel>
-            <div class="register-hidden-group"></div>
-
-            <label>Address:</label>
-            <input type="text" class="form-control" placeholder="他妈的，你的address在哪" name="address" ngModel>
-            <div class="register-hidden-group"></div>
-
-            <label>Ville:</label>
-            <select class="form-control" id="power" name="city" required ngModel>
-                <option *ngFor="let city of cities_name" [value]="city">{{city}}</option>
-            </select>
-            <a class="attention">les champs avec <span class="subtitle">*</span> sont obligatoires</a>
-
-            <button class="btn btn-success btn-block" type="submit" (click)="onSubmit(f)"><i
-                    class="fas fa-sign-in-alt"></i>Inscription</button>
+                <label for="username">Nom<span class="subtitle">*</span>:</label>
+                <input formControlName="username" type="text" id="username" #username class="form-control">
+                <div *ngIf="formErrors.username" class="showerr alert alert-danger">{{ formErrors.username }}</div>
 
 
-            <a class='btn-login' href="/login">Déja un compte? Connexion&gt;</a>
+                <label for="password1">Mot de passe<span class="subtitle">*</span>:</label>
+                <input formControlName="password1" type="password" id="password1" #password1 class="form-control">
+                <div *ngIf="formErrors.password1" class="showerr alert alert-danger">{{ formErrors.password1 }}</div>
 
+
+                <label for="password2">Confirmer le mot de passe<span class="subtitle">*</span>:</label>
+                <input formControlName="password2" type="password" id="password2" #password2 class="form-control">
+                <div *ngIf="formErrors.password2" class="showerr alert alert-danger">{{ formErrors.password2 }}</div>
+
+
+                <label for="email">Email<span class="subtitle">*</span>:</label>
+                <input formControlName="email" type="email" id="email" #email class="form-control">
+                <div *ngIf="formErrors.email" class="showerr alert alert-danger">{{ formErrors.email }}</div>
+
+                <label for="address">Address:</label>
+                <input formControlName="address" type="text" id="address" #address class="form-control">
+                <div *ngIf="formErrors.address" class="showerr alert alert-danger">{{ formErrors.address }}</div>
+
+
+                <label for="city">Ville:</label>
+                <select formControlName="city" type="text" id="city" #city class="form-control">
+                    <option *ngFor="let city of cities_name" [value]="city">{{city}}</option>
+                </select>
+
+                <a class="attention">les champs avec <span class="subtitle">*</span> sont obligatoires</a>
+
+                <button class="btn btn-success btn-block" type="submit" (click)="onSubmit()"><i
+                        class="fas fa-sign-in-alt"></i>Inscription</button>
+
+                <a class='btn-tologin' href="/login" style="color:blue;">Déja un compte? Connexion&gt;</a>
+
+            </div>
         </form>
     </div>
 </div>
@@ -48,7 +52,9 @@
 
 
 
-<!--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
+
+<!--
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
     id="bootstrap-css">-->
 
 

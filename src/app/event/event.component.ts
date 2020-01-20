@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-//import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
 import { CommunicatorService } from '../communicator/communicator.service';
 import { Event, Events } from '../format';
 import data from '../assets/events_brief';
@@ -9,7 +6,7 @@ import { EventDetailComponent } from '../event-detail/event-detail.component';
 import { MessageService } from '../communicator/message.service';
 import { Router } from '@angular/router';
 import { Category } from '../format';
-import { ConstantPool } from '@angular/compiler';
+import { GlobalInfoService } from '../communicator/global-info.service'
 
 @Component({
     selector: 'app-event',
@@ -30,7 +27,7 @@ export class EventComponent {
     small_category: any = {};
 
 
-    constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router) {
+    constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router, private globalInfoService: GlobalInfoService) {
         this.events = data; // only for offline test
         this.category = Category;
         this.large_category = Object.keys(this.category);

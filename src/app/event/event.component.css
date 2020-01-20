@@ -1,3 +1,16 @@
+/**For user*/
+.user_sunshine{
+    margin-right: 10px;
+    color: #F7B733;
+    font-size: x-large;
+    font-weight: bolder;
+    margin-right: 25px;
+    text-decoration: underline;
+}
+.user_logout{
+  font-size: x-large;
+}
+
 /* For event image cropping */
 .event-img {
   object-fit: cover;

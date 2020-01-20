@@ -54,8 +54,16 @@
         </div>
     </form>
     <div class="col-2">
-        <a class="btn-sm btn-sunshine btn-lg outline" routerLink="./login">Connexion</a>
-        <a class="btn-sm btn-sunshine btn-lg outline" routerLink="./signup">Inscription</a>
+        <div *ngIf="globalInfoService.login_state==false">
+            <a class="btn-sm btn-sunshine btn-lg outline" routerLink="./login">Connexion</a>
+            <a class="btn-sm btn-sunshine btn-lg outline" routerLink="./signup">Inscription</a>
+        </div>
+        <div *ngIf="globalInfoService.login_state==true">
+
+            <a class=" user_sunshine  outline">Hi! {{globalInfoService.username}}</a>
+            <a class="btn-sm btn-sunshine btn-lg outline" (click)="globalInfoService.logout()">Logout</a>
+
+        </div>
     </div>
 </header>
 

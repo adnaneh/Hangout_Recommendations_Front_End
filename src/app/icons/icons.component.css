@@ -1,6 +1,9 @@
-body {
-  background:url(../../assets/images/bg.jpg) no-repeat;
-  padding-top:100px;
-  background-size:cover;
-}
+form {
+ width: 90%;
+ max-width: 45em;
+ margin: auto;
+ }
 
+ .showerr {
+ white-space: pre-wrap;
+ }

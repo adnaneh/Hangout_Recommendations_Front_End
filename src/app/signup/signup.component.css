@@ -1,8 +1,17 @@
 /* sign up FORM */
+form {
+ width: 90%;
+ max-width: 45em;
+ margin: auto;
+ }
 
-.btn-login{
+ .showerr {
+ white-space: pre-wrap;
+ }
+
+.btn-tologin{
 text-align: right;
-color: #00a1d6;
+margin-top: 10px;
 }
 
 .subtitle{

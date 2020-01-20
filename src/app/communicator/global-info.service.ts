@@ -6,7 +6,8 @@ import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angul
 })
 export class GlobalInfoService {
   headers: HttpHeaders;
-  login_state: boolean = false;
+  login_state: boolean = true;
+  username: string | null = 'Tom';
 
   constructor() {
     this.headers = new HttpHeaders({
@@ -16,14 +17,16 @@ export class GlobalInfoService {
     })
   }
 
-  login(id: string | number) {
+  login(id: string | number, username: string) {
     this.headers['user_id'] = id.toString();
     this.login_state = true;
+    this.username = username;
   }
 
   logout() {
     this.headers['user_id'] = "-1";
     this.login_state = false;
+    this.username = null;
   }
 }
 

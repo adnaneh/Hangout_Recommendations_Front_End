@@ -1,3 +1,4 @@
+/** Login format */
 export interface LoginInfo {
     unique_key: string,
     pword: string
@@ -8,6 +9,16 @@ export interface LoginResp {
     login_state: boolean,
     description: string | null
 }
+
+/** Signup format */
+export interface SignupInfo {
+    uname: string,
+    pword: string,
+    address: string | null,
+    email: string,
+    city: string | null
+}
+
 
 /** Struct of an event*/
 export interface Event {
@@ -157,4 +168,4 @@ export const city_name = [
     "Boulogne - Billancourt",
     "Nancy",
     "Cannes"
-]
+].sort()

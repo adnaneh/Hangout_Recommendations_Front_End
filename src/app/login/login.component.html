@@ -3,8 +3,9 @@
         <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Connextion</h1>
 
         <input type="email" class="form-control" placeholder="Username" required autofocus="autofocus" name="unique_key"
-            ngModel #unique_key="ngModel">
-        <input type="password" class="form-control" placeholder="Password" required name="pword" ngModel>
+            ngModel #unique_key="ngModel" (click)="error=false;">
+        <input type="password" class="form-control" placeholder="Password" required name="pword" ngModel
+            (click)="error=false;">
 
         <button class="btn btn-success btn-block" type="submit" (click)="onSubmit(f)"><i class="fas fa-sign-in-alt"></i>
             Connextion</button>
@@ -21,9 +22,9 @@
 
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
     id="bootstrap-css">
-<div class="container">
+<div class="container" *ngIf="error==true">
     <div class="alert alert-error">
-        <button class="close" data-dismiss="alert" type="button">×</button> <strong>Access
+        <button class="close" type="button" (click)="error=false;">×</button> <strong>Access
             Denied!</strong>
         Please provide valid authorization.
     </div>
