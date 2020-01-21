@@ -1,17 +1,32 @@
 <!--<button (click)="showEventId()">show ID</button>-->
 
-<div class='row offset-sm-1 '>
-    <div class='container col-6 bbb'>
-        <div class="jumbotron ">
+<body>
+    <div class='row offset-sm-1 top-block'>
+        <div class='container col-6 '>
+            <div class=" ">
+                <img src="{{event['cover_url']}}" alt="cover image of the event" class="card-img-top event-img">
+            </div>
 
         </div>
-        <!--<img src="{{event['cover_url']}}" alt="cover image of the event" height="250px">-->
-    </div>
 
-    <div class='container col-6 bbb'>
-        <div class='container'> Date</div>
-        <div class='container'>Title</div>
-        <div class='row'>Price</div>
-        <div class='row'>rate</div>
+        <div class='container col-6 '>
+            <div class='row top-bar-date '>{{event['nearest']}}</div>
+            <div class='row top-bar-title '>{{event['title']}}</div>
+            <div class='row top-bar-price'>{{event['price']}}</div>
+            <div class="form-group">
+                <ngb-rating [formControl]="ctrl"></ngb-rating>
+                <div class="form-text small">
+                    <div *ngIf="ctrl.valid" class="text-success">Thanks!</div>
+                    <div *ngIf="ctrl.invalid" class="text-danger">Please rate us</div>
+                </div>
+            </div>
+            <!--
+            <hr>
+            <pre>Model: <b>{{ ctrl.value }}</b></pre>
+            <button class="btn btn-sm btn-outline-{{ ctrl.disabled ? 'danger' : 'success'}} mr-2" (click)="toggle()">
+                {{ ctrl.disabled ? "control disabled" : " control enabled" }}
+            </button>
+            <button class="btn btn-sm btn-outline-primary mr-2" (click)="ctrl.setValue(null)">Clear</button>-->
+        </div>
     </div>
-    <div>
+</body>

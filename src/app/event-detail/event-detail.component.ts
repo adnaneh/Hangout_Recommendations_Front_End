@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommunicatorService } from '../communicator/communicator.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
 import data from '../assets/99746';
 import { Event } from '../format';
 
@@ -15,6 +16,7 @@ export class EventDetailComponent implements OnInit {
 
   event_id: number;
   event: Event;
+  ctrl = new FormControl(null, Validators.required);
 
   constructor(private _activatedRoute: ActivatedRoute, private communicatorService: CommunicatorService) {
     this.event = data;  // uncomment for offline test
@@ -29,5 +31,15 @@ export class EventDetailComponent implements OnInit {
 
   showEventId() {
     console.log(this.event_id);
+  }
+
+
+
+  toggle() {
+    if (this.ctrl.disabled) {
+      this.ctrl.enable();
+    } else {
+      this.ctrl.disable();
+    }
   }
 }
