@@ -11,20 +11,54 @@
             <div class='row top-bar-date '>{{event['nearest']}}</div>
             <div class='row top-bar-title '>{{event['title']}}</div>
             <div class='row top-bar-price'>{{event['price']}}</div>
+
+            <!--
             <div class="form-group">
-                <ngb-rating [formControl]="ctrl"></ngb-rating>
+                <ngb-rating [formControl]="rate"></ngb-rating>
                 <div class="form-text small">
-                    <div *ngIf="ctrl.valid" class="text-success">Thanks!</div>
-                    <div *ngIf="ctrl.invalid" class="text-danger">Please rate us</div>
+                    <div *ngIf="rate.valid" class="text-success">Thanks!</div>
+                    <div *ngIf="rate.invalid" class="text-danger">Please rate us</div>
                 </div>
             </div>
-            <!--
+
             <hr>
-            <pre>Model: <b>{{ ctrl.value }}</b></pre>
-            <button class="btn btn-sm btn-outline-{{ ctrl.disabled ? 'danger' : 'success'}} mr-2" (click)="toggle()">
-                {{ ctrl.disabled ? "control disabled" : " control enabled" }}
+            <pre>Model: <b>{{ rate.value }}</b></pre>
+            <button class="btn btn-sm btn-outline-{{ rate.disabled ? 'danger' : 'success'}} mr-2" (click)="toggle()">
+                {{ rate.disabled ? "control disabled" : " control enabled" }}
             </button>
-            <button class="btn btn-sm btn-outline-primary mr-2" (click)="ctrl.setValue(null)">Clear</button>-->
+            <button class="btn btn-sm btn-outline-primary mr-2" (click)="rate.setValue(null)">Clear</button>
+
+        -->
+
+            <form>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-size: 2rem;">满意度&nbsp;<span style="color:red;">*</span>：
+                    </div>
+
+                    <input name="starNum" id="starNum" type="hidden" />
+                    <div class="starability-container">
+                        <fieldset class="starability-slot">
+                            <input type="radio" id="rate_1_0_1_5" name="starLevel" value="5" />
+                            <label for="rate_1_0_1_5" title="5星"></label>
+                            <input type="radio" id="rate_1_0_1_4" name="starLevel" value="4" />
+                            <label for="rate_1_0_1_4" title="4星"></label>
+                            <input type="radio" id="rate_1_0_1_3" name="starLevel" value="3" />
+                            <label for="rate_1_0_1_3" title="3星"></label>
+                            <input type="radio" id="rate_1_0_1_2" name="starLevel" value="2" />
+                            <label for="rate_1_0_1_2" title="2星"></label>
+                            <input type="radio" id="rate_1_0_1_1" name="starLevel" value="1" />
+                            <label for="rate_1_0_1_1" title="1星"></label>
+                        </fieldset>
+                    </div>
+                    <span style="font-size: 2rem;line-height: 2.9rem;padding: 1rem;font-style: oblique;"
+                        id="starStr"></span>
+                </div>
+            </form>
+
+
+
+
+
         </div>
     </div>
 

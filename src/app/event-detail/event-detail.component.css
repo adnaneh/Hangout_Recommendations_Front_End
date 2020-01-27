@@ -67,3 +67,41 @@ body{
   /*padding-top:100px;*/
   background-size:cover;
 }
+
+
+.starability-slot {
+	display:block;
+	position:relative;
+	width:150px;
+	min-height:35px;
+	padding:0;
+	border:none
+}
+.starability-slot>input {
+	position:absolute;
+	margin-right:-100%;
+	opacity:0
+}
+.starability-slot>input:checked~label,.starability-slot>input:hover~label {
+	background-position:0 -30px;
+	transition:background-position .7s
+}
+.starability-slot>label {
+	position:relative;
+	display:inline-block;
+	float:right;
+	width:30px;
+	height:30px;
+	color:transparent;
+	cursor:pointer;
+  background-image:url(../../assets/images/star.png);
+  background-color: transparent;
+	background-repeat:no-repeat
+}
+
+.hide {
+	display:none;
+}
+.show {
+	display:block;
+}

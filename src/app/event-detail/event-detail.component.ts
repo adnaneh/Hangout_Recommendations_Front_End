@@ -16,7 +16,7 @@ export class EventDetailComponent implements OnInit {
 
   event_id: number;
   event: Event;
-  ctrl = new FormControl(null, Validators.required);
+  rate = new FormControl(null, Validators.required);
 
   constructor(private _activatedRoute: ActivatedRoute, private communicatorService: CommunicatorService) {
     this.event = data;  // uncomment for offline test
@@ -29,10 +29,10 @@ export class EventDetailComponent implements OnInit {
   }   // uncomment for online situation
 
   toggle() {
-    if (this.ctrl.disabled) {
-      this.ctrl.enable();
+    if (this.rate.disabled) {
+      this.rate.enable();
     } else {
-      this.ctrl.disable();
+      this.rate.disable();
     }
   }
 }

@@ -26,7 +26,7 @@ export class CommunicatorService {
 
   constructor(private http: HttpClient, private globalInfo: GlobalInfoService) { }
 
-  readonly url_root = 'http://138.195.244.138:8080/';
+  readonly url_root = 'http://10.55.154.7:8080/';
   readonly url_api = 'api/v1.0';
   readonly serverUrl = this.url_root + this.url_api;
   readonly eventsUrl = '/Events';
