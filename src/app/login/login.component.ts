@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.communicatorService.loginUser(f)
       .subscribe(resp => {
         this.loginResp = resp;
-        this.processLoginResp(f.unique_key);
+        this.processLoginResp(resp);
       },
         error => {
           this.error = true;
@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
   }
 
   /* process the response from the server*/
-  processLoginResp(username: string) {
+  processLoginResp(resp) {
     if (this.loginResp['login_state'] == true) {
-      this.globalInfo.login(this.loginResp['user_online'], username);
+      this.globalInfo.login(resp['user_online'], resp['uname']);
       this.router.navigate(['']);
     } else {
       console.log(this.loginResp['description']);

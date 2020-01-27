@@ -7,7 +7,8 @@ export interface LoginInfo {
 export interface LoginResp {
     user_online: any,
     login_state: boolean,
-    description: string | null
+    description: string | null,
+    uname: string
 }
 
 /** Signup format */
@@ -18,6 +19,8 @@ export interface SignupInfo {
     email: string,
     city: string | null
 }
+
+
 
 
 /** Struct of an event*/

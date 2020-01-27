@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ControlContainer } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { validateRex } from './validate-register';
-import { city_name, SignupInfo } from '../format';
+import { city_name, SignupInfo, LoginInfo } from '../format';
 import { CommunicatorService } from '../communicator/communicator.service'
+import { GlobalInfoService } from '../communicator/global-info.service'
 
 /*    1. formBuilder 用来构建表单数据
       2. formGroup 表示表单类型
@@ -18,6 +21,8 @@ export class SignupComponent implements OnInit {
   registerForm: FormGroup;
   cities_name: string[];
   signUpForm = {};
+  error_msg: string | null;
+  error: boolean = false;
 
   // 表单验证不通过时显示的错误消息
   formErrors = {
@@ -57,7 +62,11 @@ export class SignupComponent implements OnInit {
   };
 
   // 添加 fb 属性，用来创建表单
-  constructor(private fb: FormBuilder, private communicatorService: CommunicatorService) {
+  constructor(
+    private fb: FormBuilder,
+    private communicatorService: CommunicatorService,
+    private router: Router,
+    private globalInfo: GlobalInfoService) {
     this.cities_name = city_name;
     this.cities_name.push("Autre ville");
   }
@@ -86,14 +95,40 @@ export class SignupComponent implements OnInit {
     //console.log(this.signUpForm)
     this.communicatorService.sigupUser(this.signUpForm)
       .subscribe(resp => {
-        console.log(resp);
+        this.processSignupResp(resp)
       });
+  }
+
+  processSignupResp(resp) {
+    if (resp['signup_state'] == false) {
+      this.raiseError(resp['description']);
+    } else if (resp['signup_state'] == true) {
+      console.log('processSignup')
+      console.log(resp);
+      this.login({
+        unique_key: this.signUpForm['uname'],
+        pword: this.signUpForm['pword']
+      });
+      //this.router.navigate(['']);
+    }
+  }
+
+
+  raiseError(msg: string) {
+    this.error = true;
+    this.error_msg = "   " + msg;
+  }
+
+  clearError() {
+    this.error = false;
+    this.error_msg = null
   }
 
   /** check the signup form is valid or not */
   check(): boolean {
     if (this.registerForm.value['password1'] != this.registerForm.value['password2']) {
-      console.log("两次密码输入不一致");
+      this.error = true;
+      this.error_msg = '两次密码输入不一致';
       return false;
     } else if (!this.registerForm.valid) {
       console.log(this.registerForm.valid);
@@ -101,6 +136,33 @@ export class SignupComponent implements OnInit {
     }
     return true
   }
+
+  /*  send login form to the server and recieve response*/
+  login(f: LoginInfo) {
+    console.log(f)
+    this.communicatorService.loginUser(f)
+      .subscribe(resp => {
+        this.processLoginResp(resp);
+        console.log('success');
+      },
+        error => {
+          this.error = true;
+        }
+      );
+  }
+
+  /* process the response from the server*/
+  processLoginResp(resp) {
+    console.log('here');
+    console.log(resp);
+    if (resp['login_state'] == true) {
+      this.globalInfo.login(resp['user_online'], resp['uname']);
+      this.router.navigate(['']);
+    } else {
+      console.log(resp['description']);
+    }
+  }
+
 
   // 构建表单方法
   buildForm(): void {

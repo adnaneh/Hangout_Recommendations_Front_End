@@ -1,13 +1,15 @@
 .event-img {
   object-fit: cover;
 
-  object-position: 100% 0;
-  object-position: 100% 1;
-  height: 200px;
+  object-position: 0% 1;
+  /*object-position: 0% 1;*/
+  /*height: 200px;*/
+  width : 100%;
+
 }
 
 .top-block{
-    height : 200px;
+    height : 300px;
 }
 
 .top-bar-date{
@@ -60,3 +62,8 @@
     word-break: break-word;
 }
 
+body{
+  background:url(../../assets/images/bg.jpg) no-repeat;
+  /*padding-top:100px;*/
+  background-size:cover;
+}

@@ -9,26 +9,31 @@
             <div class="form-group">
 
                 <label for="username">Nom<span class="subtitle">*</span>:</label>
-                <input formControlName="username" type="text" id="username" #username class="form-control">
+                <input formControlName="username" type="text" id="username" #username class="form-control"
+                    (click)="clearError()">
                 <div *ngIf="formErrors.username" class="showerr alert alert-danger">{{ formErrors.username }}</div>
 
 
                 <label for="password1">Mot de passe<span class="subtitle">*</span>:</label>
-                <input formControlName="password1" type="password" id="password1" #password1 class="form-control">
+                <input formControlName="password1" type="password" id="password1" #password1 class="form-control"
+                    (click)="clearError()">
                 <div *ngIf="formErrors.password1" class="showerr alert alert-danger">{{ formErrors.password1 }}</div>
 
 
                 <label for="password2">Confirmer le mot de passe<span class="subtitle">*</span>:</label>
-                <input formControlName="password2" type="password" id="password2" #password2 class="form-control">
+                <input formControlName="password2" type="password" id="password2" #password2 class="form-control"
+                    (click)="clearError()">
                 <div *ngIf="formErrors.password2" class="showerr alert alert-danger">{{ formErrors.password2 }}</div>
 
 
                 <label for="email">Email<span class="subtitle">*</span>:</label>
-                <input formControlName="email" type="email" id="email" #email class="form-control">
+                <input formControlName="email" type="email" id="email" #email class="form-control"
+                    (click)="clearError()">
                 <div *ngIf="formErrors.email" class="showerr alert alert-danger">{{ formErrors.email }}</div>
 
                 <label for="address">Address:</label>
-                <input formControlName="address" type="text" id="address" #address class="form-control">
+                <input formControlName="address" type="text" id="address" #address class="form-control"
+                    (click)="clearError()">
                 <div *ngIf="formErrors.address" class="showerr alert alert-danger">{{ formErrors.address }}</div>
 
 
@@ -47,6 +52,17 @@
             </div>
         </form>
     </div>
+
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
+        id="bootstrap-css">
+    <div class="container" *ngIf="error==true">
+        <div class="alert alert-error">
+            <button class="close" type="button" (click)="clearError()">×</button> <strong>Registration
+                Fail!</strong>
+            {{error_msg}};
+        </div>
+    </div>
+
 </div>
 
 

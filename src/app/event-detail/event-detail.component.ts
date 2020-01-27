@@ -24,16 +24,9 @@ export class EventDetailComponent implements OnInit {
 
   ngOnInit() {
     this.event_id = this._activatedRoute.snapshot.params['id'];
-    /*this.communicatorService.getEvent(this.event_id.toString())
-      .subscribe(() => this.event);*/
+    this.communicatorService.getEvent(this.event_id.toString())
+      .subscribe(() => this.event);
   }   // uncomment for online situation
-
-
-  showEventId() {
-    console.log(this.event_id);
-  }
-
-
 
   toggle() {
     if (this.ctrl.disabled) {
