@@ -16,8 +16,8 @@
     "facebook": "https://www.facebook.com/festivaljazzsaintgermainparis/",
     "website": "http://festivaljazzsaintgermainparis.com/accueil/",
     "cover_url": "https://quefaire-api.paris.fr/images/64888",
-    "latitude": "NULL",
-    "longitude": "NULL",
+    "latitude": 23.1092,
+    "longitude": 113.319147,
     "occurrences": {
         "2020-05-13": [
             [

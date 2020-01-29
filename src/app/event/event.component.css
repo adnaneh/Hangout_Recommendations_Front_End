@@ -20,6 +20,13 @@
   height: 200px;
 }
 
+.logo-img{
+  object-fit: cover;
+  object-position: 100% 0;
+  object-position: 100% 1;
+  height: 100px;
+}
+
 /* HeroesComponent's private CSS styles */
 
 header {

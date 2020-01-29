@@ -19,8 +19,13 @@ export class GlobalInfoService {
 
   login(id: string | number, username: string) {
     this.headers['user_id'] = id.toString();
+    console.log(this.headers['user_id']);
     this.login_state = true;
     this.username = username;
+  }
+
+  show() {
+    console.log(this.headers);
   }
 
   logout() {

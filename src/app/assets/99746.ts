@@ -17,7 +17,7 @@ export default {
     "website": "http://www.centre-mandapa.fr/",
     "cover_url": "https://quefaire-api.paris.fr/images/65001",
     "latitude": "NULL",
-    "longitude": "NULL",
+    "longitude": 133.319147,
     "occurrences": {
         "2020-02-10": [
             [

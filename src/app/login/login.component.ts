@@ -23,7 +23,10 @@ export class LoginComponent implements OnInit {
 
 
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.globalInfo.login(111, "nihao");
+    this.globalInfo.show();
+  }
 
 
   /* Called by Login button*/

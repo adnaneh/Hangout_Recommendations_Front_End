@@ -34,6 +34,7 @@ export class EventComponent {
         this._initLargeCategoryIndex();
         this._initSmallCategory();
         this.showEvents();    //uncomment for online situation
+        this.globalInfoService.show();
 
     }
 
