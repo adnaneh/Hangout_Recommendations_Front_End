@@ -2,28 +2,17 @@
     <div class="col-2">
         <img src="../../assets/images/logo.png" class="logo-img" routerLink="/" />
     </div>
-    <form class="col-8">
-        <div class="inner-form">
-            <div class="input-field first-wrap">
-                <input id="search" type="text" placeholder="What are you looking for?" />
-            </div>
-            <div class="input-field second-wrap">
-                <input id="date" type="text" placeholder="date(optional)" />
-            </div>
-            <div class="input-field third-wrap">
-                <button class="btn-search" type="button">Search</button>
-            </div>
-        </div>
-    </form>
+    <div class="col-8">
+    </div>
     <div class="col-2">
         <div *ngIf="globalInfoService.login_state==false">
-            <a class="btn-sm  btn-lg outline" routerLink="/login">Connexion</a>
-            <a class="btn-sm  btn-lg outline" routerLink="/signup">Inscription</a>
+            <a class="header-button btn-sm  btn-lg outline " routerLink="/login">Connexion</a>
+            <a class="header-button btn-sm  btn-lg outline " routerLink="/signup">Inscription</a>
         </div>
         <div *ngIf="globalInfoService.login_state==true">
 
-            <a class=" user_sunshine  outline">Hi! {{globalInfoService.username}}</a>
-            <a class="btn-sm btn-sunshine btn-lg outline" (click)="globalInfoService.logout()">Logout</a>
+            <a class="header-button user_sunshine  outline">Hi! {{globalInfoService.username}}</a>
+            <a class="header-button btn-sm btn-sunshine btn-lg outline" (click)="globalInfoService.logout()">Logout</a>
 
         </div>
     </div>
@@ -40,6 +29,7 @@
             </div>
 
         </div>
+
 
         <div class='right-block event-detail container col-7'>
             <div class='row top-bar-date '>{{event['nearest']}}</div>
@@ -103,8 +93,10 @@
                 Address: {{event['address_street']}},{{event['address_zipcode']}},{{event['address_city']}}
             </div>
             <div *ngIf="event['telephone'] != 'NULL'" class='row event-contact'>Tel: {{event['telephone']}}</div>
-            <div *ngIf="event['website'] != 'NULL'" class='row event-contact'>Link: {{event['website']}}</div>
-            <div *ngIf="event['facebook'] != 'NULL'" class='row event-contact'>Facebook: {{event['facebook']}}</div>
+            <div *ngIf="event['website'] != 'NULL'" class='row event-contact'>Link:
+                <a href="{{event['website']}}">{{event['website']}}</a> </div>
+            <div *ngIf="event['facebook'] != 'NULL'" class='row event-contact'>Facebook:<a href="{{event['facebook']}}">
+                    {{event['facebook']}}</a></div>
             <div *ngIf="event['contact_mail'] != 'NULL'" class='row event-contact'>Email: {{event['contact_mail']}}
             </div>
 
