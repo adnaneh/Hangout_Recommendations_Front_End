@@ -52,7 +52,7 @@
 
 .event-img {
   object-fit: cover;
-
+  cursor: pointer;
   object-position: 0% 1;
   /*object-position: 0% 1;*/
   /*height: 200px;*/
