@@ -44,7 +44,8 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
       .subscribe(resp => {
         this.event = resp['event']
       });
-
+    this.globalInfoService.headers['user_id'] = '1';
+    console.log("header:" + this.globalInfoService.headers);
     this._initMapsPara();
   }   // uncomment for online situation
 

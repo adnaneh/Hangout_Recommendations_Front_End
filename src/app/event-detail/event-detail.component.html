@@ -1,19 +1,51 @@
+<header class="navbar s01">
+    <div class="col-2">
+        <img src="../../assets/images/logo.png" class="logo-img" routerLink="/" />
+    </div>
+    <form class="col-8">
+        <div class="inner-form">
+            <div class="input-field first-wrap">
+                <input id="search" type="text" placeholder="What are you looking for?" />
+            </div>
+            <div class="input-field second-wrap">
+                <input id="date" type="text" placeholder="date(optional)" />
+            </div>
+            <div class="input-field third-wrap">
+                <button class="btn-search" type="button">Search</button>
+            </div>
+        </div>
+    </form>
+    <div class="col-2">
+        <div *ngIf="globalInfoService.login_state==false">
+            <a class="btn-sm  btn-lg outline" routerLink="/login">Connexion</a>
+            <a class="btn-sm  btn-lg outline" routerLink="/signup">Inscription</a>
+        </div>
+        <div *ngIf="globalInfoService.login_state==true">
+
+            <a class=" user_sunshine  outline">Hi! {{globalInfoService.username}}</a>
+            <a class="btn-sm btn-sunshine btn-lg outline" (click)="globalInfoService.logout()">Logout</a>
+
+        </div>
+    </div>
+</header>
+
+
 <body>
-    <button (click)="mapInitializer()">click</button>
+
     <div class='row offset-sm-1 top-block'>
-        <div class='logo_img container col-3 ' style="height: 800px;">
+        <div class='left-block logo_img container ' style=" height: 800px;">
             <div>
                 <img src="../../assets/images/logo.png" alt="cover image of the event" class="event-img card-img-top ">
-                <img src="{{event['cover_url']}}" alt="cover image of the event"
-                    class="event-img card-img-top img-offset">
+                <img src="{{event['cover_url']}}" alt="cover image of the event" class="cover-img img-offset">
             </div>
 
         </div>
 
-        <div class='event-detail container col-5'>
+        <div class='right-block event-detail container col-7'>
             <div class='row top-bar-date '>{{event['nearest']}}</div>
             <div class='row top-bar-title '>{{event['title']}}</div>
             <div class='row top-bar-price'>{{event['price']}}</div>
+
 
             <!--
             <div class="form-group">
@@ -32,6 +64,11 @@
             <button class="btn btn-sm btn-outline-primary mr-2" (click)="rate.setValue(null)">Clear</button>
 
         -->
+
+            <div *ngIf="event['large_category'] != 'NULL'" class="badge badge-pill badge-primary">
+                {{event['large_category']}}</div>
+            <div *ngIf="event['small_category'] != 'NULL'" class="badge badge-pill badge-primary">
+                {{event['small_category']}}</div>
 
             <form>
                 <div class="panel panel-default">
@@ -59,19 +96,16 @@
                 </div>
             </form>
 
-            <div *ngIf="event['large_category'] != 'NULL'">{{event['large_category']}}</div>
-            <div *ngIf="event['small_category'] != 'NULL'">{{event['small_category']}}</div>
             <h3>Description</h3>
-            <div class='row top-bar-date '>{{event['description']}}</div>
+            <div class='row event-description '>{{event['description']}}</div>
 
-            <div class=''>
-                <Address>Address: {{event['address_street']}},{{event['address_zipcode']}},{{event['address_city']}}
-                </Address>
+            <div class='row event-contact'>
+                Address: {{event['address_street']}},{{event['address_zipcode']}},{{event['address_city']}}
             </div>
-            <div *ngIf="event['telephone'] != 'NULL'" class='row top-bar-title '>Tel: {{event['telephone']}}</div>
-            <div *ngIf="event['website'] != 'NULL'" class='row top-bar-title '>Link: {{event['website']}}</div>
-            <div *ngIf="event['facebook'] != 'NULL'" class='row top-bar-title '>Facebook: {{event['facebook']}}</div>
-            <div *ngIf="event['contact_mail'] != 'NULL'" class='row top-bar-title '>Email: {{event['contact_mail']}}
+            <div *ngIf="event['telephone'] != 'NULL'" class='row event-contact'>Tel: {{event['telephone']}}</div>
+            <div *ngIf="event['website'] != 'NULL'" class='row event-contact'>Link: {{event['website']}}</div>
+            <div *ngIf="event['facebook'] != 'NULL'" class='row event-contact'>Facebook: {{event['facebook']}}</div>
+            <div *ngIf="event['contact_mail'] != 'NULL'" class='row event-contact'>Email: {{event['contact_mail']}}
             </div>
 
             <div *ngIf="map_status" #mapContainer id="map"></div>

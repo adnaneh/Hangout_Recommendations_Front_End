@@ -33,6 +33,7 @@ export class CommunicatorService {
   readonly loginUrl = '/Users/login';
   readonly signupUrl = '/Users/signup';
   readonly rateUrl = '/Rating';
+  readonly searchUrl = '/search';
 
 
   /** send user's login info to the server */
@@ -85,6 +86,10 @@ export class CommunicatorService {
   /** request for the detail of a single events */
   getEvent(id: string) {
     return this.http.get(this.serverUrl + this.eventsUrl + "/" + id, { headers: this.globalInfo.headers });
+  }
+
+  searchEvent(keyword: string) {
+    return this.http.post(this.serverUrl + this.eventsUrl + this.searchUrl, { 'keywords': keyword }, { headers: this.globalInfo.headers })
   }
 
   /** Get geometry with google maps API, given the street, zipcode and city name */

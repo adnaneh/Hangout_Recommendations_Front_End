@@ -20,7 +20,7 @@ export class EventComponent {
     error: any;
     headers: string[];
     event: Event;
-    events: Events;
+    events: Events | any;
     private category: any;
     large_category: string[];
     private large_category_index = {};
@@ -34,7 +34,7 @@ export class EventComponent {
         this._initLargeCategoryIndex();
         this._initSmallCategory();
         this.showEvents();    //uncomment for online situation
-        this.globalInfoService.show();
+        console.log("should be true" + this.globalInfoService.login_state);
 
     }
 
@@ -59,6 +59,15 @@ export class EventComponent {
     /* show events without indicating a specific category*/
     showEvents() {
         this.sendEventsRequest();
+    }
+
+    /** search Events */
+    searchEvent() {
+        let keyword = "2020-02-05 Soiree biere";
+        this.eventService.searchEvent(keyword)
+            .subscribe(resp => {
+                this.events = resp;
+            })
     }
 
     /** get events from server by indicating a specific category */
