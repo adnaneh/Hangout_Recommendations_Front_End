@@ -7,6 +7,7 @@ import { MessageService } from '../communicator/message.service';
 import { Router } from '@angular/router';
 import { Category } from '../format';
 import { GlobalInfoService } from '../communicator/global-info.service'
+import { NgForm, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-event',
@@ -25,6 +26,7 @@ export class EventComponent {
     large_category: string[];
     private large_category_index = {};
     small_category: any = {};
+    searchForm: FormGroup;
 
 
     constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router, private globalInfoService: GlobalInfoService) {
@@ -90,6 +92,10 @@ export class EventComponent {
         console.log("after send message")
     }
 
+    /** bind with button of search bar  */
+    onSubmit(f: NgForm) {
+        console.log(f.value);
+    }
 
 
     private _initSmallCategory() {

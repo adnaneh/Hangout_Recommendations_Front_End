@@ -2,16 +2,17 @@
     <div class="col-2">
         <img src="../../assets/images/logo.png" class="logo-img" (click)="showEvents()" />
     </div>
-    <form class="col-8">
+    <form class="col-8" #f="ngForm">
         <div class="inner-form">
             <div class="input-field first-wrap">
-                <input id="search" type="text" placeholder="What are you looking for?" />
+                <input type="text" class="form-control" id="search" name="search" type="text" ngModel
+                    #unique_key="ngModel" placeholder="What are you looking for?" />
             </div>
             <div class="input-field second-wrap">
-                <input id="date" type="text" placeholder="date(optional)" />
+                <input id="date" type="date" id="date" name="date" type="date" ngModel #unique_key="ngModel" />
             </div>
             <div class="input-field third-wrap">
-                <button class="btn-search" type="button" (click)="searchEvent()">Search</button>
+                <button class="btn-search" type="submit" (click)="onSubmit(f)">Search</button>
             </div>
         </div>
     </form>
