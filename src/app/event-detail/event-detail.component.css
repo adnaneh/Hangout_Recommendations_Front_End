@@ -176,7 +176,6 @@ body{
   min-height :2000px;
 }
 
-
 .starability-slot {
 	display:block;
 	position:relative;
@@ -213,8 +212,6 @@ body{
 .show {
 	display:block;
 }
-
-
 
 /**For user*/
 .user_sunshine{

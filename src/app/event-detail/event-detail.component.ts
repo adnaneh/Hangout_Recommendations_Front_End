@@ -45,7 +45,7 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
         this.event = resp['event']
       });
     this.globalInfoService.headers['user_id'] = '1';
-    console.log("header:" + this.globalInfoService.headers);
+    //console.log("header:" + this.globalInfoService.headers);
     this._initMapsPara();
   }   // uncomment for online situation
 
@@ -57,24 +57,24 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
   async _initMapsPara() {
 
     /** check if the event contains geometry*/
-    console.log(this.map_status);
+    //console.log(this.map_status);
     if (this.event['latitude'] != "NULL" && this.event['longitude'] != "NULL") {
       this.lat = this.event['latitude'];
       this.lng = this.event['longitude'];
       this.map_status = true;
-      console.log("ok");
+      //console.log("ok");
     }
 
     /** check if the event contains street name etc*/
     if (this.map_status == false) {
       let location = this.processLocationName();
-      console.log(location);
+      //console.log(location);
       let resp = await this.communicatorService.getGeometry(location)
         .toPromise();
       this.lat = resp['results']['0']['geometry']['location']['lat'];
       this.lng = resp['results']['0']['geometry']['location']['lng'];
-      console.log(this.lat);
-      console.log(this.lng);
+      //console.log(this.lat);
+      //console.log(this.lng);
       this.map_status = true;
     }
 
@@ -114,10 +114,10 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
 
 
   mapInitializer() {
-    console.log("second");
+    //console.log("second");
 
     if (!this.map_status) {
-      console.log("die2");
+      console.log("maoInitializer die");
       return
     }
     this.map = new google.maps.Map(this.gmap.nativeElement,

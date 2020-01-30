@@ -4,6 +4,7 @@ import { LoginInfo, Events, SignupInfo } from '../format';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { GlobalInfoService } from './global-info.service'
+import { AESService } from '../aes.service'
 
 
 /*
@@ -24,7 +25,11 @@ const httpOptions = {
 @Injectable()
 export class CommunicatorService {
 
-  constructor(private http: HttpClient, private globalInfo: GlobalInfoService) { }
+  constructor(
+    private http: HttpClient,
+    private globalInfo: GlobalInfoService,
+    private AES: AESService
+  ) { }
 
   readonly url_root = 'http://10.55.154.7:8080/';
   readonly url_api = 'api/v1.0';
@@ -38,6 +43,7 @@ export class CommunicatorService {
 
   /** send user's login info to the server */
   loginUser(loginInfo: LoginInfo): Observable<LoginInfo> {
+    loginInfo = this.AES.encrypt(loginInfo);
     return this.http.post<LoginInfo>(this.serverUrl + this.loginUrl, loginInfo, { headers: this.globalInfo.headers })
       .pipe(
         retry(3),
@@ -48,6 +54,8 @@ export class CommunicatorService {
 
   /** Sign up */
   sigupUser(signupInfo: any): Observable<SignupInfo> {
+    signupInfo = this.AES.encrypt(signupInfo);
+    console.log(signupInfo);
     return this.http.post<any>(this.serverUrl + this.signupUrl, signupInfo, { headers: this.globalInfo.headers })
       .pipe(
         retry(3),

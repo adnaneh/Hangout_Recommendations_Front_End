@@ -64,9 +64,9 @@ export class EventComponent {
     }
 
     /** search Events */
-    searchEvent() {
-        let keyword = "2020-02-05 Soiree biere";
-        this.eventService.searchEvent(keyword)
+    searchEvent(msg: string) {
+        //console.log(msg);
+        this.eventService.searchEvent(msg)
             .subscribe(resp => {
                 this.events = resp;
             })
@@ -94,7 +94,14 @@ export class EventComponent {
 
     /** bind with button of search bar  */
     onSubmit(f: NgForm) {
-        console.log(f.value);
+        let info: string = "";
+        info += f.value['search'];
+        info += " " + f.value['date'];
+        if (info.match(/^[ ]+$/)) {
+            console.log("input of search bar is all space");
+            return
+        }
+        this.searchEvent(info);
     }
 
 

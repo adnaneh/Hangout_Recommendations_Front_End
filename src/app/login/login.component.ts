@@ -6,6 +6,7 @@ import { GlobalInfoService } from '../communicator/global-info.service';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,7 +20,10 @@ export class LoginComponent implements OnInit {
   response: string = '';
   loginResp: any;
   error: boolean = false;
-  constructor(private communicatorService: CommunicatorService, private globalInfo: GlobalInfoService, private router: Router) { }
+  constructor(private communicatorService: CommunicatorService,
+    private globalInfo: GlobalInfoService,
+    private router: Router
+  ) { }
 
 
 
