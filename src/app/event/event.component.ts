@@ -31,12 +31,12 @@ export class EventComponent {
 
     constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router, private globalInfoService: GlobalInfoService) {
         this.events = data; // only for offline test
+        //this.events = { "event": [] };
         this.category = Category;
         this.large_category = Object.keys(this.category);
         this._initLargeCategoryIndex();
         this._initSmallCategory();
         this.showEvents();    //uncomment for online situation
-        console.log("should be true" + this.globalInfoService.login_state);
 
     }
 

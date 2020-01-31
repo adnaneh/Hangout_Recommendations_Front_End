@@ -34,6 +34,7 @@
 
 <div class="row">
     <div class="col col-2">
+
         <mat-accordion>
             <mat-expansion-panel *ngFor="let i of large_category">
                 <mat-expansion-panel-header (click)="getEvents(i)">
@@ -51,6 +52,7 @@
     </div>
 
     <div class="col col-10">
+        <h1 *ngIf="events['event'].length==0">n'a pas pu trouver l'activité correspondante</h1>
         <div class="row  row-cols-md-4 row-cols-sm-3 ">
             <div class="col d-flex align-items-stretch mb-5" *ngFor="let e of events['event']">
                 <div class="card" [routerLink]="['/eventdetail',e['event_id']]" routerLinkActive="router-link-active">

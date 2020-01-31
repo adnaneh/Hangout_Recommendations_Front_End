@@ -14,14 +14,14 @@ export class IconsComponent {
 
   plainText: string;
   encryptText: string;
-  password: string = "武汉加油";
+  password: string = "passphrase";
 
   constructor() {
 
   }
 
   click() {
-    this.plainText = "好好学习 天天向上";
+    this.plainText = "测试字符串";
     console.log(this.plainText);
     this.plainText = this.encode(this.plainText);
     console.log(this.plainText);
