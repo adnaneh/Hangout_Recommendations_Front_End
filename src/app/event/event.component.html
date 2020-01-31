@@ -54,7 +54,7 @@
     <div class="col col-10">
         <h1 *ngIf="events['event'].length==0">n'a pas pu trouver l'activité correspondante</h1>
         <div class="row  row-cols-md-4 row-cols-sm-3 ">
-            <div class="col d-flex align-items-stretch mb-5" *ngFor="let e of events['event']">
+            <div class="col d-flex align-items-stretch mb-5" *ngFor="let e of pageOfEvents">
                 <div class="card" [routerLink]="['/eventdetail',e['event_id']]" routerLinkActive="router-link-active">
                     <img src="{{e['cover_url']}}" class="card-img-top event-img" alt="cover image of the event">
                     <div class="card-body">
@@ -66,6 +66,7 @@
                     </div>
                 </div>
             </div>
+            <jw-pagination [items]="events['event']" pageSize=12 (changePage)="onChangePage($event)"></jw-pagination>
         </div>
     </div>
 </div>

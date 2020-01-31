@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommunicatorService } from '../communicator/communicator.service';
 import { Event, Events } from '../format';
 import data from '../assets/events_brief';
@@ -17,7 +17,7 @@ import { NgForm, FormGroup } from '@angular/forms';
     styleUrls: ['./event.component.css'],
     inputs: ['inputsValue']
 })
-export class EventComponent {
+export class EventComponent implements OnInit {
     error: any;
     headers: string[];
     event: Event;
@@ -27,6 +27,8 @@ export class EventComponent {
     private large_category_index = {};
     small_category: any = {};
     searchForm: FormGroup;
+    items1 = [];
+    pageOfEvents: Array<any>;
 
 
     constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router, private globalInfoService: GlobalInfoService) {
@@ -37,7 +39,15 @@ export class EventComponent {
         this._initLargeCategoryIndex();
         this._initSmallCategory();
         this.showEvents();    //uncomment for online situation
+    }
 
+    ngOnInit() {
+
+    }
+
+    onChangePage(pageOfEvents: Array<any>) {
+        // update current page of items
+        this.pageOfEvents = pageOfEvents;
     }
 
     /* send request for a list of events to the server */

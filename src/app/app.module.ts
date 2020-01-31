@@ -15,8 +15,8 @@ import { IconsComponent } from './icons/icons.component';
 import { SignupComponent } from './signup/signup.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { MessageService } from './communicator/message.service';
-import { ConfirmpswDirectiveDirective } from './icons/confirmpsw-directive.directive'
-
+import { ConfirmpswDirectiveDirective } from './icons/confirmpsw-directive.directive';
+import { JwPaginationComponent } from 'jw-angular-pagination';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { ConfirmpswDirectiveDirective } from './icons/confirmpsw-directive.direc
     IconsComponent,
     SignupComponent,
     EventDetailComponent,
-    ConfirmpswDirectiveDirective
+    ConfirmpswDirectiveDirective,
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
