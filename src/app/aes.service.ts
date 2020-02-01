@@ -28,6 +28,8 @@ export class AESService {
     }
   }
 
+  
+
   decrypt(msg: string) {
     return CryptoJS.AES.decrypt(msg.trim(), this.password.trim()).toString(CryptoJS.enc.Utf8);
   }
