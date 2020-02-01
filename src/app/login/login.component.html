@@ -9,7 +9,7 @@
 
         <button class="btn btn-success btn-block" type="submit" (click)="onSubmit(f)"><i class="fas fa-sign-in-alt"></i>
             Connextion</button>
-        <a href="#" id="forgot_pswd">Mot de passe oublié?</a>
+        <a href="#" id="forgot_pswd" [routerLink]="['../forget-password']">Mot de passe oublié?</a>
         <hr>
         <p>Don't have an account!</p>
         <button class="btn btn-primary btn-block" type="button" id="btn-signup" [routerLink]="['../signup']"

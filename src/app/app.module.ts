@@ -17,6 +17,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { MessageService } from './communicator/message.service';
 import { ConfirmpswDirectiveDirective } from './icons/confirmpsw-directive.directive';
 import { JwPaginationComponent } from 'jw-angular-pagination';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     SignupComponent,
     EventDetailComponent,
     ConfirmpswDirectiveDirective,
-    JwPaginationComponent
+    JwPaginationComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'eventdetail/:id', component: EventDetailComponent },
-      { path: 'icons', component: IconsComponent }
+      { path: 'icons', component: IconsComponent },
+      { path: 'forget-password', component: ForgetPasswordComponent }
     ]),
     BrowserAnimationsModule
   ],
