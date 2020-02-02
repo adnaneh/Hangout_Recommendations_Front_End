@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Category } from '../format';
 import { GlobalInfoService } from '../communicator/global-info.service'
 import { NgForm, FormGroup } from '@angular/forms';
+// import { mdbIcon } from 'mdbvue';
 
 @Component({
     selector: 'app-event',
@@ -15,7 +16,8 @@ import { NgForm, FormGroup } from '@angular/forms';
     providers: [CommunicatorService],
     styles: ['.error {color:red;}'],
     styleUrls: ['./event.component.css'],
-    inputs: ['inputsValue']
+    inputs: ['inputsValue'],
+    // animations: ['handleClick']
 })
 export class EventComponent implements OnInit {
     error: any;
@@ -31,6 +33,7 @@ export class EventComponent implements OnInit {
     pageOfEvents: Array<any>;
 
 
+
     constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router, private globalInfoService: GlobalInfoService) {
         this.events = data; // only for offline test
         //this.events = { "event": [] };
@@ -40,6 +43,7 @@ export class EventComponent implements OnInit {
         this._initSmallCategory();
         this.showEvents();    //uncomment for online situation
     }
+    
 
     ngOnInit() {
 
@@ -128,6 +132,10 @@ export class EventComponent implements OnInit {
             i++;
         }
     }
+    handleClick() {
+        console.log('clicked');
+      }
 
 
 }
+

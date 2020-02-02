@@ -2,22 +2,10 @@
     <div class="col-2">
         <img src="../../assets/images/logo.png" class="logo-img" (click)="showEvents()" />
     </div>
-    <form class="col-8" #f="ngForm">
-        <div class="inner-form">
-            <div class="input-field first-wrap">
-                <input type="text" class="form-control" id="search" name="search" type="text" ngModel
-                    #unique_key="ngModel" placeholder="What are you looking for?" />
-            </div>
-            <div class="input-field second-wrap">
-                <input id="date" type="date" id="date" name="date" type="date" ngModel #unique_key="ngModel" />
-            </div>
-            <div class="input-field third-wrap">
-                <button class="btn-search" type="submit" (click)="onSubmit(f)">Search</button>
-            </div>
-        </div>
-    </form>
     <div class="col-2">
         <div *ngIf="globalInfoService.login_state==false">
+
+
             <a class="btn-sm btn-lg outline" routerLink="/login">Connexion</a>
             <a class="btn-sm btn-lg outline" routerLink="/signup">Inscription</a>
         </div>
@@ -28,6 +16,40 @@
 
         </div>
     </div>
+    <div class="col-4">
+        <!-- Search form -->
+        <form class="form-inline md-form form-sm">
+            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"
+            mdbInput>
+            <mdb-icon  fas icon="search" aria-hidden="true" (click)="handleClick()" class="clickable-icon"></mdb-icon>
+
+
+            
+            <!-- <button mdbBtn size="sm" gradient="aqua" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search</button> -->
+            <!-- <mdb-icon  icon="calendar-check" class="clickable-icon"/> -->
+
+        </form>
+    </div>
+
+    <!-- <form class="col-8" #f="ngForm">
+        <div class="inner-form">
+            <div class="input-field first-wrap">
+                <input type="text" class="form-control" id="search" name="search" type="text" ngModel
+                    #unique_key="ngModel" placeholder="Search" />
+            </div> 
+            <div class="input-field second-wrap">
+                <input id="date" type="date" id="date" name="date" type="date" ngModel #unique_key="ngModel" />
+            </div> 
+            <form class="form-inline md-form form-sm">
+                <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search"
+                mdbInput>
+                <mdb-icon fas icon="search" aria-hidden="true"></mdb-icon>
+            </form>
+            <div class="input-field third-wrap">
+                <button class="btn-search" type="submit" (click)="onSubmit(f)">Search</button>
+            </div>
+        </div>
+    </form> -->
 </header>
 
 <br />
