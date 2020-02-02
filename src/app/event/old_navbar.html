@@ -3,7 +3,7 @@
         <img src="../../assets/images/logo.png" class="logo-img" (click)="showEvents()" />
     </div>
     <div class="col-2 ">
-        <div *ngIf="globalInfoService.login_state==false">
+        <div *ngIf="globalInfoService.login_state==true">
 
 
                 <a class="btn-sm btn-lg outline" routerLink="/login">Join</a>
@@ -13,7 +13,7 @@
     </div>
     <div class="col-2 ">
 
-        <div *ngIf="globalInfoService.login_state==true">
+        <div *ngIf="globalInfoService.login_state==false">
 
             <a class=" user_sunshine  outline">Hi! {{globalInfoService.username}}</a>
             <a class="btn-sm btn-sunshine btn-lg outline" (click)="globalInfoService.logout()">Logout</a>
