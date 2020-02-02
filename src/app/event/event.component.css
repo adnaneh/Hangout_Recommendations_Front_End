@@ -25,12 +25,20 @@ jw-pagination{
   object-position: 50% 1;
   height: 200px;
 }
+.profile-img{
+  
+  object-fit: cover;
+  object-position: 100% 0;
+  object-position: 100% 1;
+  height: 30px;
+  cursor: pointer;
+}
 
 .logo-img{
   object-fit: cover;
   object-position: 100% 0;
   object-position: 100% 1;
-  height: 100px;
+  height: 40px;
   cursor: pointer;
 }
 
@@ -844,3 +852,6 @@ padding: 3rem !important; }
 .clickable-icon {
   cursor: pointer;
 }
+.dropdown-toggle:after {
+  display: none;
+ }
