@@ -456,8 +456,7 @@ select {
  */
 button,
 html [type="button"],
-[type="reset"],
-[type="submit"] {
+[type="reset"] {
   -webkit-appearance: button;
   /* 2 */
 }
@@ -467,8 +466,7 @@ html [type="button"],
  */
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type="reset"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -478,8 +476,7 @@ button::-moz-focus-inner,
  */
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+[type="reset"]:-moz-focusring{
   outline: 1px dotted ButtonText;
 }
 
