@@ -4,9 +4,7 @@ This project is part of the Hangout Recommendation project of Atelier Developmen
 
 This project is generated with [Angular CLI](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Get started
-
-### Installation
+## Installation
 To get started locally, follow these instructions:
 
 1. Make sure that you have Node 10.13 or later installed. See instructions [here](https://nodejs.org/en/download/)
