@@ -193,7 +193,7 @@ body{
 	background-position:0 -30px;
 	transition:background-position .7s
 }
-.starability-slot>label {
+.starability-slot .dark {
 	position:relative;
 	display:inline-block;
 	float:right;
@@ -202,6 +202,19 @@ body{
 	color:transparent;
 	cursor:pointer;
   background-image:url(../../assets/images/star.png);
+  background-color: transparent;
+	background-repeat:no-repeat
+}
+
+.starability-slot .bright {
+	position:relative;
+	display:inline-block;
+	float:right;
+	width:30px;
+	height:30px;
+	color:transparent;
+	cursor:pointer;
+  background-image:url(../../assets/images/star_rev.png);
   background-color: transparent;
 	background-repeat:no-repeat
 }
