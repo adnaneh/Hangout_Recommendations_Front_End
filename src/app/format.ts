@@ -65,6 +65,18 @@ export interface Events {
     event: Event_brief[]
 }
 
+/** Struct of  */
+export interface sendCaptchaInfo {
+    email: string,
+    captcha: string
+}
+
+/** Struct of reset password */
+export interface resetPswInfo {
+    email: string,
+    pword: string
+}
+
 /** Category */
 export const Category = {
 

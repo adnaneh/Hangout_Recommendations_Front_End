@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { LoginInfo, Events, SignupInfo } from '../format';
+import { LoginInfo, Events, SignupInfo, resetPswInfo, sendCaptchaInfo } from '../format';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { GlobalInfoService } from './global-info.service'
@@ -31,7 +31,7 @@ export class CommunicatorService {
     private AES: AESService
   ) { }
 
-  readonly url_root = 'http://10.55.154.7:8080/';
+  readonly url_root = 'http://10.55.154.17:8080/';
   readonly url_api = 'api/v1.0';
   readonly serverUrl = this.url_root + this.url_api;
   readonly eventsUrl = '/Events';
@@ -39,6 +39,8 @@ export class CommunicatorService {
   readonly signupUrl = '/Users/signup';
   readonly rateUrl = '/Rating';
   readonly searchUrl = '/search';
+  readonly resetPswUrl = '/Users/reset_password';
+  readonly sendLinktoEmailUrl = '/Users/send_link_by_email';
 
 
   /** send user's login info to the server */
@@ -57,6 +59,26 @@ export class CommunicatorService {
     signupInfo = this.AES.encrypt(signupInfo);
     console.log(signupInfo);
     return this.http.post<any>(this.serverUrl + this.signupUrl, signupInfo, { headers: this.globalInfo.headers })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  /**send captcha */
+  sendCaptcha(msg: sendCaptchaInfo) {
+    msg = this.AES.encrypt(msg);
+    return this.http.post<any>(this.serverUrl + this.sendLinktoEmailUrl, msg, { headers: this.globalInfo.headers })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  /** Reset password */
+  resetPassword(msg: resetPswInfo) {
+    console.log(msg);
+    msg = this.AES.encrypt(msg);
+    return this.http.post<any>(this.serverUrl + this.resetPswUrl, msg, { headers: this.globalInfo.headers })
       .pipe(
         retry(3),
         catchError(this.handleError)

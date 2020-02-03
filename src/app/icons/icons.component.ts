@@ -25,11 +25,11 @@ export class IconsComponent {
 
   click() {
 
-    this.plainText = CryptoJS.enc.Utf8.parse("合肥");
+    this.plainText = CryptoJS.enc.Utf8.parse("日狗");
     console.log("plain text : " + this.plainText);
     let encrypted = this.encode(this.plainText);
     console.log("encrypted: " + encrypted);
-    this.plainText = this.decode(encrypted);
+    this.plainText = this.decode("tZnxcixyXMnaHfxoWMVC5Q==");
 
 
 
