@@ -5,9 +5,9 @@ import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angul
   providedIn: 'root'
 })
 export class GlobalInfoService {
-  headers: HttpHeaders;
-  login_state: boolean = false;
-  username: string | null = null;
+  headers: HttpHeaders;   // http headers
+  login_state: boolean = false;   // login state,true user logined in
+  username: string | null = null; // username
 
   constructor() {
     this.headers = new HttpHeaders({
@@ -17,6 +17,7 @@ export class GlobalInfoService {
     })
   }
 
+  // once a user logined in, save the user's information
   login(user_id: string | number, username: string) {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json', //documentation: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types
@@ -31,6 +32,7 @@ export class GlobalInfoService {
     console.log(this.headers);
   }
 
+  // user login out, clear the user's information
   logout() {
     this.headers['user_id'] = "-1";
     this.login_state = false;

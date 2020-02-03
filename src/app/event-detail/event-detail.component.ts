@@ -19,15 +19,13 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
 
   event_id: number;
   event: Event;
-  //rate = new FormControl(null, Validators.required);
-
 
   /** Google maps module parameters */
   title = 'angular-gmap';
   @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
   map: google.maps.Map;
   map_status: boolean = false;
-  lat: any = 23;   // canton tower
+  lat: any = 23;
   lng: any = 11;
   coordinates: any;
   mapOptions: google.maps.MapOptions;
@@ -49,6 +47,7 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
     this._initMapsPara();
   }   // uncomment for online situation
 
+  /** after loading the page, wait 2 secs for well recieving responses from google map api*/
   ngAfterViewInit() {
     setTimeout(() => { this.mapInitializer(); }, 2000);
   }
@@ -96,6 +95,7 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
     console.log("finish");
   }
 
+  /** combine the address information into 1 string */
   processLocationName() {
     var location: string = "";
     if (this.event['address_street'] != "NULL") {
@@ -112,10 +112,8 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
     return location
   }
 
-
+  /** initialize google map */
   mapInitializer() {
-    //console.log("second");
-
     if (!this.map_status) {
       console.log("maoInitializer die");
       return
@@ -134,14 +132,13 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
     }
   }*/
 
+  /**rate for the event */
   rate(score: number) {
     //console.log(this.globalInfoService.headers['user_id']);
     //if (this.globalInfoService.headers['user_id'] == '-1') {
     this.communicatorService.sendRate(score, Number(this.event_id)).subscribe();
     //}
   }
-
-
 
 
 }

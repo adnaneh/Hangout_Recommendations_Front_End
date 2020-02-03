@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { LoginInfo, Events, SignupInfo } from '../format';
+import { LoginInfo, Events, SignupInfo, resetPswInfo, sendCaptchaInfo } from '../format';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { GlobalInfoService } from './global-info.service'
@@ -40,6 +40,8 @@ export class CommunicatorService {
   readonly signupUrl = '/Users/signup';
   readonly rateUrl = '/Rating';
   readonly searchUrl = '/search';
+  readonly resetPswUrl = '/Users/reset_password';
+  readonly sendLinktoEmailUrl = '/Users/send_link_by_email';
 
 
   /** send user's login info to the server */
@@ -64,6 +66,26 @@ export class CommunicatorService {
       );
   }
 
+  /**send captcha */
+  sendCaptcha(msg: sendCaptchaInfo) {
+    msg = this.AES.encrypt(msg);
+    return this.http.post<any>(this.serverUrl + this.sendLinktoEmailUrl, msg, { headers: this.globalInfo.headers })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  /** Reset password */
+  resetPassword(msg: resetPswInfo) {
+    console.log(msg);
+    msg = this.AES.encrypt(msg);
+    return this.http.post<any>(this.serverUrl + this.resetPswUrl, msg, { headers: this.globalInfo.headers })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
   /** rate for an event */
   sendRate(rate: number, event_id: number): Observable<any> {
     console.log(this.globalInfo.headers);
@@ -79,14 +101,14 @@ export class CommunicatorService {
     if (event_id == null) {
       return this.http.get<Events>(this.serverUrl + this.eventsUrl, { headers: this.globalInfo.headers, observe: 'response' })
         .pipe(
-          retry(3), // 重复尝试最多3次
+          retry(3), // retry up to 3 times
           catchError(this.handleError)  //then catch the error
         );
     } else {
       //console.log(this.serverUrl + this.eventsUrl + "/" + event_id);
       return this.http.get<Events>(this.serverUrl + this.eventsUrl + "/Categories/" + event_id, { headers: this.globalInfo.headers, observe: 'response' })
         .pipe(
-          retry(3), // 重复尝试最多3次
+          retry(3),
           catchError(this.handleError)
         );
     }

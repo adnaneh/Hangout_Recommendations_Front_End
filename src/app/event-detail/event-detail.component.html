@@ -1,27 +1,101 @@
-<header class="navbar s01">
-    <div class="col-2">
-        <img src="../../assets/images/logo.png" class="logo-img" routerLink="/" />
-    </div>
-    <div class="col-8">
-    </div>
-    <div class="col-2">
-        <div *ngIf="globalInfoService.login_state==false">
-            <a class="header-button btn-sm  btn-lg outline " routerLink="/login">Connexion</a>
-            <a class="header-button btn-sm  btn-lg outline " routerLink="/signup">Inscription</a>
-        </div>
-        <div *ngIf="globalInfoService.login_state==true">
+<header>
+    <!--Navbar-->
+    <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark purple lighten-1" [containerInside]="false">
+        <!-- Navbar brand -->
+        <mdb-navbar-brand>
+            <a class="navbar-brand" href="#">
+                <img src="../../assets/images/logo.png" class="logo-img" (click)="showEvents()" alt="" />
+            </a>
+        </mdb-navbar-brand>
 
-            <a class="header-button user_sunshine  outline">Hi! {{globalInfoService.username}}</a>
-            <a class="header-button btn-sm btn-sunshine btn-lg outline" (click)="globalInfoService.logout()">Logout</a>
+        <!-- Collapsible content -->
+        <links>
+            <!-- Links -->
 
-        </div>
-    </div>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <!-- Post -->
+                    <li class="nav-item dropdown" dropdown>
+                        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+                            mdbWavesEffect>
+                            Post<span class="caret"></span></a>
+                        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Post Photos</a>
+                            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Write review</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link waves-light" type="button" mdbWavesEffect>Events</a>
+                    </li>
+
+                    <!-- Inbox -->
+                    <li class="nav-item dropdown" dropdown>
+                        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+                            mdbWavesEffect>
+                            <mdb-icon fas icon="envelope"></mdb-icon><span class="caret"></span>
+                        </a>
+                        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Message 1</a>
+                            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Message 2</a>
+                        </div>
+                    </li>
+
+                    <!-- Profile Picture or Join -->
+                    <!-- Join -->
+                    <li class="nav-item">
+                        <div *ngIf="globalInfoService.login_state==false">
+                            <a mdbBtn color="success" outline="true" size="sm" class="waves-light" type="submit"
+                                mdbWavesEffect routerLink="/login">Login</a>
+                            <a mdbBtn color="success" outline="true" size="sm" class="waves-light" type="submit"
+                                mdbWavesEffect routerLink="/signup ">Join</a>
+                        </div>
+                    </li>
+
+                    <!-- Profile -->
+
+                    <div *ngIf="globalInfoService.login_state==true">
+                        <li class="nav-item dropdown" dropdown>
+                            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+                                mdbWavesEffect>
+                                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt=""
+                                    class="profile-img  rounded-circle z-depth-0"></a>
+                            <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary"
+                                role="menu">
+                                <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+                                <a class="dropdown-item waves-light" mdbWavesEffect href="#"
+                                    (click)="globalInfoService.logout()">Log out</a>
+                            </div>
+                        </li>
+                    </div>
+
+                    <!-- Search form -->
+                    <form class="form-inline md-form form-sm" #f='ngForm'>
+                        <li class="nav-item">
+                            <input id="search" name="search" ngModel class="form-control form-control-sm mr-3 w-75"
+                                type="text" placeholder="Search" aria-label="Search" (keydown.enter)="onSubmit(f)">
+                        </li>
+                    </form>
+
+                </ul>
+
+            </ul>
+        </links>
+        <!-- Collapsible content -->
+
+    </mdb-navbar>
+    <!--/.Navbar-->
+
 </header>
 
+
+<!-- event detail-->
 
 <body>
 
     <div class='row offset-sm-1 top-block'>
+        <!-- left bar, with logo and cover image -->
         <div class='left-block logo_img container ' style=" height: 800px;">
             <div>
                 <img src="../../assets/images/logo.png" routerLink="/" alt="cover image of the event"
@@ -31,30 +105,11 @@
 
         </div>
 
-
+        <!-- event's detail -->
         <div class='right-block event-detail container col-7'>
             <div class='row top-bar-date '>{{event['nearest']}}</div>
             <div class='row top-bar-title '>{{event['title']}}</div>
             <div class='row top-bar-price'>{{event['price']}}</div>
-
-
-            <!--
-            <div class="form-group">
-                <ngb-rating [formControl]="rate"></ngb-rating>
-                <div class="form-text small">
-                    <div *ngIf="rate.valid" class="text-success">Thanks!</div>
-                    <div *ngIf="rate.invalid" class="text-danger">Please rate us</div>
-                </div>
-            </div>
-
-            <hr>
-            <pre>Model: <b>{{ rate.value }}</b></pre>
-            <button class="btn btn-sm btn-outline-{{ rate.disabled ? 'danger' : 'success'}} mr-2" (click)="toggle()">
-                {{ rate.disabled ? "control disabled" : " control enabled" }}
-            </button>
-            <button class="btn btn-sm btn-outline-primary mr-2" (click)="rate.setValue(null)">Clear</button>
-
-        -->
 
             <div *ngIf="event['large_category'] != 'NULL'" class="badge badge-pill badge-primary">
                 {{event['large_category']}}</div>
@@ -67,19 +122,20 @@
                             style="color:red;">*</span>：
                     </div>
 
+                    <!-- stars rating -->
                     <input name="starNum" id="starNum" type="hidden" />
                     <div class="starability-container">
                         <fieldset class="starability-slot">
                             <input type="radio" id="rate_1_0_1_5" name="starLevel" value="5" (click)='rate(5)' />
-                            <label for="rate_1_0_1_5" title="5星"></label>
+                            <label class="dark" for="rate_1_0_1_5" title="Coooool $.$"></label>
                             <input type="radio" id="rate_1_0_1_4" name="starLevel" value="4" (click)='rate(4)' />
-                            <label for="rate_1_0_1_4" title="4星"></label>
+                            <label class="dark" for="rate_1_0_1_4" title="Bien ^-^"></label>
                             <input type="radio" id="rate_1_0_1_3" name="starLevel" value="3" (click)='rate(3)' />
-                            <label for="rate_1_0_1_3" title="3星"></label>
+                            <label class="dark" for="rate_1_0_1_3" title="Moyen =.="></label>
                             <input type="radio" id="rate_1_0_1_2" name="starLevel" value="2" (click)='rate(2)' />
-                            <label for="rate_1_0_1_2" title="2星"></label>
+                            <label class="dark" for="rate_1_0_1_2" title="Pas Terrible *.*"></label>
                             <input type="radio" id="rate_1_0_1_1" name="starLevel" value="1" (click)='rate(1)' />
-                            <label for="rate_1_0_1_1" title="1星"></label>
+                            <label class="dark" for="rate_1_0_1_1" title="Plus Jamais >-<"></label>
                         </fieldset>
                     </div>
                     <span style="font-size: 2rem;line-height: 2.9rem;padding: 1rem;font-style: oblique;"

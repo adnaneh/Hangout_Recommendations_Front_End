@@ -20,9 +20,6 @@ export interface SignupInfo {
     city: string | null
 }
 
-
-
-
 /** Struct of an event*/
 export interface Event {
     event_id: number,
@@ -49,7 +46,7 @@ export interface Event {
     small_category: string
 }
 
-
+/** struct of the event's thumbnail */
 export interface Event_brief {
     event_id: number,
     title: string,
@@ -63,6 +60,18 @@ export interface Event_brief {
 /** Struct of events */
 export interface Events {
     event: Event_brief[]
+}
+
+/** Struct of  */
+export interface sendCaptchaInfo {
+    email: string,
+    captcha: string
+}
+
+/** Struct of reset password */
+export interface resetPswInfo {
+    email: string,
+    pword: string
 }
 
 /** Category */
@@ -131,6 +140,7 @@ export const Category = {
 
 };
 
+/** main cities' name in France */
 export const city_name = [
     "Paris",
     "Marseille",
