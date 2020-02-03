@@ -34,7 +34,11 @@ export class GlobalInfoService {
 
   // user login out, clear the user's information
   logout() {
-    this.headers['user_id'] = "-1";
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json', //documentation: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+      'Authorization': 'Made-in-China#!@$%?',
+      'user_id': '-1'
+    });
     this.login_state = false;
     this.username = null;
   }
