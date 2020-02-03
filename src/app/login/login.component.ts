@@ -4,6 +4,7 @@ import { LoginInfo, LoginResp } from '../format'
 import { NgForm, FormGroup } from '@angular/forms';
 import { GlobalInfoService } from '../communicator/global-info.service';
 import { Router } from '@angular/router';
+import { Info } from "../icons/shareInfo.service"
 
 
 
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   error: boolean = false;
   constructor(private communicatorService: CommunicatorService,
     private globalInfo: GlobalInfoService,
-    private router: Router
+    private router: Router,
+    private info: Info
   ) { }
 
 
@@ -59,6 +61,14 @@ export class LoginComponent implements OnInit {
     } else {
       console.log(this.loginResp['description']);
     }
+  }
+
+  click() {
+    this.info.increase()
+  }
+
+  show() {
+    this.globalInfo.show()
   }
 
 }

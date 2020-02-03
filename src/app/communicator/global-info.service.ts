@@ -5,7 +5,11 @@ import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angul
   providedIn: 'root'
 })
 export class GlobalInfoService {
-  headers: HttpHeaders;   // http headers
+  headers: HttpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json', //documentation: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+    'Authorization': 'Made-in-China#!@$%?',
+    'user_id': '-1'
+  });   // http headers
   login_state: boolean = false;   // login state,true user logined in
   username: string | null = null; // username
 

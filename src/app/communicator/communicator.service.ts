@@ -31,7 +31,7 @@ export class CommunicatorService {
     private AES: AESService
   ) { }
 
-  readonly url_root = 'http://10.55.154.17:8080/';
+  readonly url_root = 'http://10.55.154.23:8080/';
   readonly url_api = 'api/v1.0';
   readonly serverUrl = this.url_root + this.url_api;
   readonly eventsUrl = '/Events';
@@ -46,6 +46,7 @@ export class CommunicatorService {
   /** send user's login info to the server */
   loginUser(loginInfo: LoginInfo): Observable<LoginInfo> {
     loginInfo = this.AES.encrypt(loginInfo);
+    console.log(this.globalInfo.headers);
     return this.http.post<LoginInfo>(this.serverUrl + this.loginUrl, loginInfo, { headers: this.globalInfo.headers })
       .pipe(
         retry(3),
@@ -57,7 +58,7 @@ export class CommunicatorService {
   /** Sign up */
   sigupUser(signupInfo: any): Observable<SignupInfo> {
     signupInfo = this.AES.encrypt(signupInfo);
-    console.log(signupInfo);
+    console.log(this.globalInfo.headers);
     return this.http.post<any>(this.serverUrl + this.signupUrl, signupInfo, { headers: this.globalInfo.headers })
       .pipe(
         retry(3),
@@ -76,7 +77,7 @@ export class CommunicatorService {
 
   /** Reset password */
   resetPassword(msg: resetPswInfo) {
-    console.log(msg);
+    //console.log(msg);
     msg = this.AES.encrypt(msg);
     return this.http.post<any>(this.serverUrl + this.resetPswUrl, msg, { headers: this.globalInfo.headers })
       .pipe(
@@ -87,7 +88,7 @@ export class CommunicatorService {
 
   /** rate for an event */
   sendRate(rate: number, event_id: number): Observable<any> {
-    console.log(this.globalInfo.headers);
+    //console.log(this.globalInfo.headers);
     return this.http.post<any>(this.serverUrl + this.rateUrl, { 'rate': rate, 'event_id': event_id }, { headers: this.globalInfo.headers })
       .pipe(
         retry(3),
@@ -97,6 +98,7 @@ export class CommunicatorService {
 
   /** request for events  */
   getEvents(event_id: string | number = null): Observable<HttpResponse<Events>> {
+    console.log(this.globalInfo.headers);
     if (event_id == null) {
       return this.http.get<Events>(this.serverUrl + this.eventsUrl, { headers: this.globalInfo.headers, observe: 'response' })
         .pipe(
@@ -115,6 +117,7 @@ export class CommunicatorService {
 
   /** request for the detail of a single events */
   getEvent(id: string) {
+    console.log(this.globalInfo.headers);
     return this.http.get(this.serverUrl + this.eventsUrl + "/" + id, { headers: this.globalInfo.headers });
   }
 
@@ -124,6 +127,7 @@ export class CommunicatorService {
 
   /** Get geometry with google maps API, given the street, zipcode and city name */
   getGeometry(location: string) {
+    console.log(this.globalInfo.headers);
     return this.http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=AIzaSyBuTCnWUH_Y6S9YpMWai7_n0PQgpMM7-Yw")
     //https://maps.googleapis.com/maps/api/geocode/json?address=1+rue+joliot+curie,+91190,+gif+sur+yvette&key=AIzaSyBuTCnWUH_Y6S9YpMWai7_n0PQgpMM7-Yw
   }
@@ -141,7 +145,7 @@ export class CommunicatorService {
     }
     // return an observable with a user-facing error message
     return throwError(
-      
+
       'Something bad happened; please try again later.');
   };
 

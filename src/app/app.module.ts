@@ -14,7 +14,6 @@ import { IconsComponent } from './icons/icons.component';
 import { SignupComponent } from './signup/signup.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { MessageService } from './communicator/message.service';
-import { ConfirmpswDirectiveDirective } from './icons/confirmpsw-directive.directive';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { WavesModule, InputsModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md';
@@ -32,7 +31,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     IconsComponent,
     SignupComponent,
     EventDetailComponent,
-    ConfirmpswDirectiveDirective,
     JwPaginationComponent,
     ForgetPasswordComponent,
   ],
