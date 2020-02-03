@@ -1,33 +1,84 @@
-<header class="navbar s01">
-    <div class="col-2">
-        <img src="../../assets/images/logo.png" class="logo-img" (click)="showEvents()" />
-    </div>
-    <form class="col-8" #f="ngForm">
-        <div class="inner-form">
-            <div class="input-field first-wrap">
-                <input type="text" class="form-control" id="search" name="search" type="text" ngModel
-                    #unique_key="ngModel" placeholder="What are you looking for?" />
-            </div>
-            <div class="input-field second-wrap">
-                <input id="date" type="date" id="date" name="date" type="date" ngModel #unique_key="ngModel" />
-            </div>
-            <div class="input-field third-wrap">
-                <button class="btn-search" type="submit" (click)="onSubmit(f)">Search</button>
-            </div>
-        </div>
-    </form>
-    <div class="col-2">
-        <div *ngIf="globalInfoService.login_state==false">
-            <a class="btn-sm btn-lg outline" routerLink="/login">Connexion</a>
-            <a class="btn-sm btn-lg outline" routerLink="/signup">Inscription</a>
-        </div>
-        <div *ngIf="globalInfoService.login_state==true">
+<header>
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark purple lighten-1" [containerInside]="false">
+        <!-- Navbar brand -->
+        <mdb-navbar-brand>
+            <a class="navbar-brand" href="#">
+                <img src="../../assets/images/logo.png" class="logo-img" (click)="showEvents()" alt="" />
+            </a>
+        </mdb-navbar-brand>
+      
+        <!-- Collapsible content -->
+        <links>
+          <!-- Links -->
+      
+          <ul class="navbar-nav ml-auto nav-flex-icons">
+            <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+            <!-- Post -->
+            <li class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                Post<span class="caret"></span></a>
+                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Post Photos</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Write review</a>
+                </div>
+            </li>
 
-            <a class=" user_sunshine  outline">Hi! {{globalInfoService.username}}</a>
-            <a class="btn-sm btn-sunshine btn-lg outline" (click)="globalInfoService.logout()">Logout</a>
+            <li class="nav-item">
+                <a class="nav-link waves-light" type="button" mdbWavesEffect>Events</a>
+            </li>
 
-        </div>
-    </div>
+            <!-- Inbox -->
+            <li class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                    <mdb-icon fas icon="envelope"></mdb-icon><span class="caret"></span>
+                </a>
+                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Message 1</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Message 2</a>
+                </div>
+            </li>
+        
+            <!-- Profile Picture or Join -->
+            <!-- Join -->
+            <li class="nav-item">
+                <div *ngIf="globalInfoService.login_state==false">
+                    <a mdbBtn color="success" outline="true" size="sm" class="waves-light" type="submit" mdbWavesEffect routerLink="/login">Login</a>
+                    <a mdbBtn color="success" outline="true" size="sm" class="waves-light" type="submit" mdbWavesEffect routerLink="/signup ">Join</a>
+                </div>
+            </li>
+
+            <!-- Profile -->
+
+            <div *ngIf="globalInfoService.login_state==true">
+            <li class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" class="profile-img  rounded-circle z-depth-0"></a>
+                <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#" (click)="globalInfoService.logout()">Log out</a>
+                </div>
+            </li>
+            </div>
+
+            <!-- Search form -->
+            <form class="form-inline md-form form-sm" #f='ngForm'>
+                <li class="nav-item"  >
+                    <input id = "search" name ="search" ngModel class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                    aria-label="Search" (keydown.enter)="onSubmit(f)">
+                </li>
+            </form>
+
+        </ul>
+ 
+        </ul>
+        </links>
+        <!-- Collapsible content -->
+      
+      </mdb-navbar>
+      <!--/.Navbar-->
+
 </header>
 
 <br />

@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventComponent } from './event/event.component';
@@ -18,6 +19,10 @@ import { MessageService } from './communicator/message.service';
 import { ConfirmpswDirectiveDirective } from './icons/confirmpsw-directive.directive';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { WavesModule, InputsModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
+
 
 
 @NgModule({
@@ -30,16 +35,20 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     EventDetailComponent,
     ConfirmpswDirectiveDirective,
     JwPaginationComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
   ],
   imports: [
     BrowserModule,
+    MDBBootstrapModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     MatExpansionModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    WavesModule, InputsModule, ButtonsModule,
+    IconsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: EventComponent },
       { path: 'login', component: LoginComponent },
@@ -47,8 +56,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
       { path: 'eventdetail/:id', component: EventDetailComponent },
       { path: 'icons', component: IconsComponent },
       { path: 'forget-password', component: ForgetPasswordComponent }
-    ]),
-    BrowserAnimationsModule
+    ])
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
