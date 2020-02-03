@@ -32,7 +32,7 @@ export class CommunicatorService {
   ) { }
 
   // readonly url_root = 'http://10.55.154.7:8080/';
-  readonly url_root = 'http://10.56.62.27:8080/';
+  readonly url_root = 'http://138.195.62.167:8080/';
   readonly url_api = 'api/v1.0';
   readonly serverUrl = this.url_root + this.url_api;
   readonly eventsUrl = '/Events';
@@ -46,7 +46,8 @@ export class CommunicatorService {
 
   /** send user's login info to the server */
   loginUser(loginInfo: LoginInfo): Observable<LoginInfo> {
-    loginInfo = this.AES.encrypt(loginInfo);
+    // loginInfo = this.AES.encrypt(loginInfo);
+    loginInfo = loginInfo;
     return this.http.post<LoginInfo>(this.serverUrl + this.loginUrl, loginInfo, { headers: this.globalInfo.headers })
       .pipe(
         retry(3),
@@ -57,7 +58,8 @@ export class CommunicatorService {
 
   /** Sign up */
   sigupUser(signupInfo: any): Observable<SignupInfo> {
-    signupInfo = this.AES.encrypt(signupInfo);
+    // signupInfo = this.AES.encrypt(signupInfo);
+    signupInfo = signupInfo;
     console.log(signupInfo);
     return this.http.post<any>(this.serverUrl + this.signupUrl, signupInfo, { headers: this.globalInfo.headers })
       .pipe(
