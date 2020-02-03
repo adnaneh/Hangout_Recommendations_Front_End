@@ -36,3 +36,5 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## License 
+This project  is under the MIT license. See the [LICENSE](https://github.com/CHUht/Hangout_Recommendations_Front_End/blob/master/LICENSE) file for details.
