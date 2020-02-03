@@ -96,6 +96,7 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
     console.log("finish");
   }
 
+  /** combine the address information into 1 string */
   processLocationName() {
     var location: string = "";
     if (this.event['address_street'] != "NULL") {
@@ -112,10 +113,8 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
     return location
   }
 
-
+  /** initialize google map */
   mapInitializer() {
-    //console.log("second");
-
     if (!this.map_status) {
       console.log("maoInitializer die");
       return
@@ -134,6 +133,7 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
     }
   }*/
 
+  /**rate for the event */
   rate(score: number) {
     //console.log(this.globalInfoService.headers['user_id']);
     //if (this.globalInfoService.headers['user_id'] == '-1') {

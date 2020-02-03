@@ -24,12 +24,12 @@ export class IconsComponent {
   }
 
   click() {
-
-    this.plainText = CryptoJS.enc.Utf8.parse("日狗");
+    this.plainText = "12345678";
     console.log("plain text : " + this.plainText);
+    this.plainText = CryptoJS.enc.Utf8.parse(this.plainText);
     let encrypted = this.encode(this.plainText);
     console.log("encrypted: " + encrypted);
-    this.plainText = this.decode("tZnxcixyXMnaHfxoWMVC5Q==");
+    this.plainText = this.decode(encrypted);
 
 
 

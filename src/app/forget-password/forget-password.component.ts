@@ -75,20 +75,20 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   verify() {
-    if (this.CAPTCHA_sent != true) {  //未发出captcha
+    if (this.CAPTCHA_sent != true) {  //fail to send captcha
       this.error = true;
       this.error_msg = "Il faut d'abord envoyer un captcha";
       return false
-    } else if (this.authorized_email == false) {  //邮箱不正确
+    } else if (this.authorized_email == false) {  //email incorrect
       this.error = true;
       this.error_msg = "Email incorrect!";
       return false
-    } else if (this.password.length < 8 && this.password.length > 20) {  //密码长度不正确
+    } else if (this.password.length < 8 && this.password.length > 20) {  //length of password incorrect
       this.error = true;
       console.log(this.password.length);
       this.error_msg = "Le mot de passe devrait entre 8 et 20 caractères!";
       return false
-    } else if (this.CAPTCHA_input != this.CAPTCHA) {  //验证码不正确
+    } else if (this.CAPTCHA_input != this.CAPTCHA) {  //CAPTCHA incorrect
       this.error = true;
       this.error_msg = "CAPTCHA incorrect!";
       return false
@@ -96,7 +96,7 @@ export class ForgetPasswordComponent implements OnInit {
       this.error = true;
       this.error_msg = "Le mot de passe ne contient que chiffre et alphabet!";
       return false
-    } else if (this.password != this.password_repeat) { //两次输入不一致
+    } else if (this.password != this.password_repeat) { //the 2 inputs are incoherent 
       this.error = true;
       this.error_msg = "Les deux mots de passe sont incohérentes!";
       return false
