@@ -1,6 +1,6 @@
 <div id='logreg-forms'>
     <form class="form-signin" #f="ngForm">
-        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Connextion</h1>
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Connexion</h1>
 
         <input type="email" class="form-control" placeholder="Username" required autofocus="autofocus" name="unique_key"
             ngModel #unique_key="ngModel" (click)="error=false;">
@@ -8,7 +8,7 @@
             (click)="error=false;">
 
         <button class="btn btn-success btn-block" type="submit" (click)="onSubmit(f)"><i class="fas fa-sign-in-alt"></i>
-            Connextion</button>
+            Connexion</button>
         <a href="#" id="forgot_pswd" [routerLink]="['../forget-password']">Mot de passe oublié?</a>
         <hr>
         <p>Don't have an account!</p>
