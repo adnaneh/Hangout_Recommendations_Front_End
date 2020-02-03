@@ -49,7 +49,7 @@ export interface Event {
     small_category: string
 }
 
-
+/** struct of the event's thumbnail */
 export interface Event_brief {
     event_id: number,
     title: string,
@@ -143,6 +143,7 @@ export const Category = {
 
 };
 
+/** main cities' name in France */
 export const city_name = [
     "Paris",
     "Marseille",

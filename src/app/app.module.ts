@@ -5,8 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +19,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { WavesModule, InputsModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 

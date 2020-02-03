@@ -12,7 +12,7 @@ export class AESService {
   encryptText: string;
   password = CryptoJS.enc.Utf8.parse("WuHan,GoodLuck!!");//KEY
   //password = CryptoJS.enc.Utf8.parse("1234567812345678");
-  iv = CryptoJS.enc.Utf8.parse("+wx:lzh295256908");
+  iv = CryptoJS.enc.Utf8.parse("+wx:lzh295256908"); // WeChat account of the database's developper LI Zhihao, this is a secret!>-< 
 
   /** encoding function, input can be string,number or dictionary */
   encrypt(msg: string | object | number) {
@@ -32,15 +32,12 @@ export class AESService {
     }
   }
 
-
-  decrypt(msg: string) {
-    return CryptoJS.AES.decrypt(msg.trim(), this.password.trim()).toString(CryptoJS.enc.Utf8);
-  }
-
+  /** given a string, return the encrypted string */
   encode(msg: string) {
     return CryptoJS.AES.encrypt(msg, this.password, { iv: this.iv, mode: CryptoJS.mode.CBC, pad: CryptoJS.pad.pkcs7, asBpytes: true }).toString()
   }
 
+  /** given a encrypted string, return the original string */
   decode(msg: string) {
     return CryptoJS.AES.decrypt(msg, this.password, { iv: this.iv, mode: CryptoJS.mode.CBC, pad: CryptoJS.pad.pkcs7, asBpytes: true }).toString(CryptoJS.enc.Utf8);
   }
