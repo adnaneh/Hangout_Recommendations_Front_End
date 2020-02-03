@@ -15,11 +15,11 @@ export class ForgetPasswordComponent implements OnInit {
   password_repeat: string;
   authorized_email: boolean;
   CAPTCHA_sent: boolean = false;
-  CAPTCHA: number;
-  CAPTCHA_input: number;
+  CAPTCHA: number;          // generated CAPTCHA
+  CAPTCHA_input: number;    // user's input CAPTCHA
   error: boolean = false;  //true means have error
   error_msg: string;
-  regex = /^[0-9a-zA-Z_]+$/;
+  regex = /^[0-9a-zA-Z_]+$/;    // allowed characters for new password
   button_text = "Envoyer Captcha";
 
   constructor(private communicatorService: CommunicatorService,
@@ -29,6 +29,7 @@ export class ForgetPasswordComponent implements OnInit {
   ngOnInit() {
   }
 
+  /** require the backend to send the CAPTCHA by email*/
   sendCaptcha() {
     this.error = false;
     this.button_text = "Sending...";
@@ -56,6 +57,7 @@ export class ForgetPasswordComponent implements OnInit {
         });
   }
 
+  /** check and send the new password to the server if the new password is in correct format  */
   resetPassword() {
 
     if (this.verify()) {
@@ -74,6 +76,7 @@ export class ForgetPasswordComponent implements OnInit {
     }
   }
 
+  /** verrify if CAPTCHA,password and email are valid*/
   verify() {
     if (this.CAPTCHA_sent != true) {  //fail to send captcha
       this.error = true;
@@ -92,7 +95,7 @@ export class ForgetPasswordComponent implements OnInit {
       this.error = true;
       this.error_msg = "CAPTCHA incorrect!";
       return false
-    } else if (!this.regex.test(this.password)) {
+    } else if (!this.regex.test(this.password)) { // new password contains invalid character
       this.error = true;
       this.error_msg = "Le mot de passe ne contient que chiffre et alphabet!";
       return false
