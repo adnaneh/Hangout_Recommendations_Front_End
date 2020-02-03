@@ -100,14 +100,14 @@ export class CommunicatorService {
     if (event_id == null) {
       return this.http.get<Events>(this.serverUrl + this.eventsUrl, { headers: this.globalInfo.headers, observe: 'response' })
         .pipe(
-          retry(3), // 重复尝试最多3次
+          retry(3), // retry up to 3 times
           catchError(this.handleError)  //then catch the error
         );
     } else {
       //console.log(this.serverUrl + this.eventsUrl + "/" + event_id);
       return this.http.get<Events>(this.serverUrl + this.eventsUrl + "/Categories/" + event_id, { headers: this.globalInfo.headers, observe: 'response' })
         .pipe(
-          retry(3), // 重复尝试最多3次
+          retry(3),
           catchError(this.handleError)
         );
     }

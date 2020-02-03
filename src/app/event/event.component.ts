@@ -36,14 +36,13 @@ export class EventComponent implements OnInit {
 
     constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router, private globalInfoService: GlobalInfoService) {
         this.events = data; // only for offline test
-        //this.events = { "event": [] };
         this.category = Category;
         this.large_category = Object.keys(this.category);
         this._initLargeCategoryIndex();
         this._initSmallCategory();
         this.showEvents();    //uncomment for online situation
     }
-    
+
 
     ngOnInit() {
 
@@ -119,13 +118,14 @@ export class EventComponent implements OnInit {
         this.searchEvent(info);
     }
 
-
+    /** initialize the contents of the small categories */
     private _initSmallCategory() {
         for (let key of this.large_category) {
             this.small_category[key] = Object.keys(this.category[key]);
         }
     }
 
+    /** initialize the contents of the large categories */
     private _initLargeCategoryIndex() {
         var i = 1;
         for (let category of this.large_category) {
