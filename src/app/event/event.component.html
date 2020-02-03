@@ -6,10 +6,32 @@
         <div *ngIf="globalInfoService.login_state==false">
 
 
+<<<<<<< Updated upstream
             <a class="btn-sm btn-lg outline" routerLink="/login">Connexion</a>
             <a class="btn-sm btn-lg outline" routerLink="/signup">Inscription</a>
         </div>
         <div *ngIf="globalInfoService.login_state==true">
+=======
+            <!-- Inbox -->
+            <li class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                    <mdb-icon fas icon="envelope"></mdb-icon><span class="caret"></span>
+                </a>
+                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Message 1</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Message 2</a>
+                </div>
+            </li>
+        
+            <!-- Profile Picture or Join -->
+            <!-- Join -->
+            <li class="nav-item">
+                <div *ngIf="globalInfoService.login_state==false">
+                    <a mdbBtn color="success" outline="true" size="sm" class="waves-light" type="submit" mdbWavesEffect routerLink="/login">Login</a>
+                    <a mdbBtn color="success" outline="true" size="sm" class="waves-light" type="submit" mdbWavesEffect routerLink="/signup">Join</a>
+                </div>
+            </li>
+>>>>>>> Stashed changes
 
             <a class=" user_sunshine  outline">Hi! {{globalInfoService.username}}</a>
             <a class="btn-sm btn-sunshine btn-lg outline" (click)="globalInfoService.logout()">Logout</a>
