@@ -20,9 +20,6 @@ export interface SignupInfo {
     city: string | null
 }
 
-
-
-
 /** Struct of an event*/
 export interface Event {
     event_id: number,
