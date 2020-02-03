@@ -110,6 +110,7 @@ export class EventComponent implements OnInit {
     onSubmit(f: NgForm) {
         let info: string = "";
         info += f.value['search'];
+        console.log(f.value['search']);
         info += " " + f.value['date'];
         if (info.match(/^[ ]+$/)) {
             console.log("input of search bar is all space");
@@ -132,10 +133,6 @@ export class EventComponent implements OnInit {
             i++;
         }
     }
-    handleClick() {
-        console.log('clicked');
-      }
-
 
 }
 

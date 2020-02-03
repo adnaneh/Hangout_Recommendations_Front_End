@@ -20,6 +20,8 @@ import { ConfirmpswDirectiveDirective } from './icons/confirmpsw-directive.direc
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { WavesModule, InputsModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 
 
 
@@ -37,6 +39,7 @@ import { WavesModule, InputsModule, ButtonsModule, IconsModule } from 'angular-b
   ],
   imports: [
     BrowserModule,
+    MDBBootstrapModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     MatExpansionModule,
