@@ -19,15 +19,13 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
 
   event_id: number;
   event: Event;
-  //rate = new FormControl(null, Validators.required);
-
 
   /** Google maps module parameters */
   title = 'angular-gmap';
   @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
   map: google.maps.Map;
   map_status: boolean = false;
-  lat: any = 23;   // canton tower
+  lat: any = 23;
   lng: any = 11;
   coordinates: any;
   mapOptions: google.maps.MapOptions;
@@ -49,6 +47,7 @@ export class EventDetailComponent implements OnInit, AfterViewInit {
     this._initMapsPara();
   }   // uncomment for online situation
 
+  /** after loading the page, wait 2 secs for well recieving responses from google map api*/
   ngAfterViewInit() {
     setTimeout(() => { this.mapInitializer(); }, 2000);
   }

@@ -19,9 +19,12 @@
 </header>
 
 
+<!-- event detail-->
+
 <body>
 
     <div class='row offset-sm-1 top-block'>
+        <!-- left bar, with logo and cover image -->
         <div class='left-block logo_img container ' style=" height: 800px;">
             <div>
                 <img src="../../assets/images/logo.png" routerLink="/" alt="cover image of the event"
@@ -31,7 +34,7 @@
 
         </div>
 
-
+        <!-- event's detail -->
         <div class='right-block event-detail container col-7'>
             <div class='row top-bar-date '>{{event['nearest']}}</div>
             <div class='row top-bar-title '>{{event['title']}}</div>
@@ -48,6 +51,7 @@
                             style="color:red;">*</span>：
                     </div>
 
+                    <!-- stars rating -->
                     <input name="starNum" id="starNum" type="hidden" />
                     <div class="starability-container">
                         <fieldset class="starability-slot">
