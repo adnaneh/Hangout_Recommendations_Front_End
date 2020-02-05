@@ -31,7 +31,7 @@ export class CommunicatorService {
     private AES: AESService
   ) { }
 
-  readonly url_root = 'http://10.55.154.23:8080/';
+  readonly url_root = 'http://192.168.56.1:8080/';
   readonly url_api = 'api/v1.0';
   readonly serverUrl = this.url_root + this.url_api;
   readonly eventsUrl = '/Events';
