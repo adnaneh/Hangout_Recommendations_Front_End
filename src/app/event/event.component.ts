@@ -35,7 +35,7 @@ export class EventComponent implements OnInit {
 
 
     constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router, private globalInfoService: GlobalInfoService) {
-        this.events = data; // only for offline test
+        //this.events = data; // only for offline test
         this.category = Category;
         this.large_category = Object.keys(this.category);
         this._initLargeCategoryIndex();
@@ -82,7 +82,11 @@ export class EventComponent implements OnInit {
         this.eventService.searchEvent(msg)
             .subscribe(resp => {
                 this.events = resp;
-            })
+            },
+                error => {
+                    this.events = null;
+                }
+            )
     }
 
     /** get events from server by indicating a specific category */
