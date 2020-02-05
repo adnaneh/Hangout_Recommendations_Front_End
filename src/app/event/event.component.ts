@@ -110,7 +110,7 @@ export class EventComponent implements OnInit {
         let info: string = "";
         info += f.value['search'];
         console.log(f.value['search']);
-        info += " " + f.value['date'];
+        //info += " " + f.value['date'];
         if (info.match(/^[ ]+$/)) {
             console.log("input of search bar is all space");
             return
