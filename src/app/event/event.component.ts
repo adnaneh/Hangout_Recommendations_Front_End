@@ -84,7 +84,7 @@ export class EventComponent implements OnInit {
                 this.events = resp;
             },
                 error => {
-                    this.events = null;
+                    this.events = { "event": [] };
                 }
             )
     }
