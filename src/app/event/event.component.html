@@ -131,13 +131,7 @@
         <div class="row  row-cols-md-4 row-cols-sm-3 ">
             <div class="col d-flex align-items-stretch mb-5" *ngFor="let e of pageOfEvents">
                 <div class="card" [routerLink]="['/eventdetail',e['event_id']]" routerLinkActive="router-link-active">
-                    <div *ngIf="e['cover_url'] != 'NULL'">
-                        <img src="{{e['cover_url']}}" class="card-img-top event-img" alt="cover image of the event">
-                    </div>
-                    <div *ngIf="e['cover_url'] == 'NULL'">
-                        <img src="../../assets/images/noimage.png" class="card-img-top event-img"
-                            alt="cover image of the event">
-                    </div>
+                    <img src="{{e['cover_url']}}" class="card-img-top event-img" alt="cover image of the event">
                     <div class="card-body">
                         <p class="card-text">{{e['nearest']}}</p>
                         <h5 class="card-title">{{e['title']}}</h5>
