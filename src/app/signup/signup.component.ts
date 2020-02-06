@@ -6,11 +6,19 @@ import { validateRex } from './validate-register';
 import { city_name, SignupInfo, LoginInfo } from '../format';
 import { CommunicatorService } from '../communicator/communicator.service'
 import { GlobalInfoService } from '../communicator/global-info.service'
+import {Inject} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 /*    1. formBuilder 用来构建表单数据
       2. formGroup 表示表单类型
       3. Validators 包含了表单内置的验证规则，如： Validators.required*/
 
+  export interface DialogData {
+    animal: string;
+    name: string;
+  }
+      
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -61,11 +69,14 @@ export class SignupComponent implements OnInit {
     }
   };
 
+
   // 添加 fb 属性，用来创建表单
   constructor(
     private fb: FormBuilder,
     private communicatorService: CommunicatorService,
     private router: Router,
+    public dialogRef: MatDialogRef<SignupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private globalInfo: GlobalInfoService) {
     this.cities_name = city_name;
     this.cities_name.push("Autre ville");
@@ -75,7 +86,9 @@ export class SignupComponent implements OnInit {
     // 初始化时构建表单
     this.buildForm();
   }
-
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   onSubmit() {
     if (this.check()) {

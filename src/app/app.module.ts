@@ -25,6 +25,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatButtonModule,MatFormFieldModule,MatInputModule,MatRippleModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 
+// import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+
 
 
 @NgModule({
@@ -41,6 +44,7 @@ import {MatDialogModule} from '@angular/material/dialog';
   ],
   imports: [
     MatDialogModule,
+    // MatDialog, MatDialogRef,
     MatButtonModule,MatFormFieldModule,MatInputModule,MatRippleModule,
     BrowserModule,
     MDBBootstrapModule.forRoot(),

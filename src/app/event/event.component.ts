@@ -11,6 +11,8 @@ import { NgForm, FormGroup } from '@angular/forms';
 // import { mdbIcon } from 'mdbvue';
 import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+import { SignupComponent } from '../signup/signup.component';
 
 
 export interface DialogData {
@@ -74,9 +76,28 @@ export class EventComponent implements OnInit {
 
     }
     openDialog(): void {
-        const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-          width: '250px',
-          data: {name: this.name, animal: this.animal}
+        const dialogRef = this.dialog.open(LoginComponent, {
+        panelClass: 'custom-dialog-container' ,
+        //   height: '500',
+        //   width: '500',
+          data: {name: this.name, animal: this.animal},
+        //   panelClass: 'custom-dialog-container'
+        
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+          this.animal = result;
+        });
+      }
+      openDialogSignup(): void {
+        const dialogRef = this.dialog.open(SignupComponent, {
+        panelClass: 'custom-dialog-container' ,
+        //   height: '500',
+        //   width: '500',
+          data: {name: this.name, animal: this.animal},
+        //   panelClass: 'custom-dialog-container'
+        
         });
     
         dialogRef.afterClosed().subscribe(result => {

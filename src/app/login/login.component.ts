@@ -4,14 +4,21 @@ import { LoginInfo, LoginResp } from '../format'
 import { NgForm, FormGroup } from '@angular/forms';
 import { GlobalInfoService } from '../communicator/global-info.service';
 import { Router } from '@angular/router';
-import { Info } from "../icons/shareInfo.service"
+import { Info } from "../icons/shareInfo.service";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Inject} from '@angular/core';
 
 
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['/login.component.css']
 })
 export class LoginComponent implements OnInit {
   loginInfo: LoginInfo;
@@ -24,13 +31,18 @@ export class LoginComponent implements OnInit {
   constructor(private communicatorService: CommunicatorService,
     private globalInfo: GlobalInfoService,
     private router: Router,
-    private info: Info
+    private info: Info,
+    public dialogRef: MatDialogRef<LoginComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) { }
 
 
 
   ngOnInit() {
 
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 
