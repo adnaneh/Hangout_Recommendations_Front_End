@@ -9,6 +9,29 @@ import { Category } from '../format';
 import { GlobalInfoService } from '../communicator/global-info.service'
 import { NgForm, FormGroup } from '@angular/forms';
 // import { mdbIcon } from 'mdbvue';
+import {Inject} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
+
+
+export interface DialogData {
+    animal: string;
+    name: string;
+  }
+@Component({
+    selector: 'dialog-overview-example-dialog',
+    templateUrl: 'dialog-overview-example-dialog.html',
+  })
+  export class DialogOverviewExampleDialog {
+  
+    constructor(
+      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+      @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
+  
+  }
 
 @Component({
     selector: 'app-event',
@@ -31,10 +54,12 @@ export class EventComponent implements OnInit {
     searchForm: FormGroup;
     items1 = [];
     pageOfEvents: Array<any>;
+    animal: string;
+    name: string;
 
 
 
-    constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router, private globalInfoService: GlobalInfoService) {
+    constructor(private eventService: CommunicatorService, private messageService: MessageService, private router: Router, private globalInfoService: GlobalInfoService, public dialog: MatDialog) {
         //this.events = data; // only for offline test
         this.events = { "event": [] };
         this.category = Category;
@@ -48,7 +73,17 @@ export class EventComponent implements OnInit {
     ngOnInit() {
 
     }
-
+    openDialog(): void {
+        const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+          width: '250px',
+          data: {name: this.name, animal: this.animal}
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+          this.animal = result;
+        });
+      }
     onChangePage(pageOfEvents: Array<any>) {
         // update current page of items
         this.pageOfEvents = pageOfEvents;
@@ -138,6 +173,11 @@ export class EventComponent implements OnInit {
             i++;
         }
     }
+    
 
 }
+
+
+
+
 

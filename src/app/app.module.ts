@@ -14,12 +14,16 @@ import { IconsComponent } from './icons/icons.component';
 import { SignupComponent } from './signup/signup.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { MessageService } from './communicator/message.service';
+import {DialogOverviewExampleDialog} from './event/event.component';
+
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { WavesModule, InputsModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import {MatButtonModule,MatFormFieldModule,MatInputModule,MatRippleModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -33,8 +37,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EventDetailComponent,
     JwPaginationComponent,
     ForgetPasswordComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
+    MatDialogModule,
+    MatButtonModule,MatFormFieldModule,MatInputModule,MatRippleModule,
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     AppRoutingModule,
@@ -56,6 +63,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ])
   ],
   providers: [MessageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[DialogOverviewExampleDialog]
 })
 export class AppModule { }

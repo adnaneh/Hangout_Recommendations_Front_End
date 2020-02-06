@@ -44,7 +44,22 @@
 
                     <!-- Profile Picture or Join -->
                     <!-- Join -->
+                    
+                    
                     <li class="nav-item">
+                        <ol>
+                            <li>
+                              <mat-form-field>
+                                <input matInput [(ngModel)]="name" placeholder="What's your name?">
+                              </mat-form-field>
+                            </li>
+                            <li>
+                              <button mat-raised-button (click)="openDialog()">Pick one</button>
+                            </li>
+                            <li *ngIf="animal">
+                              You chose: <i>{{animal}}</i>
+                            </li>
+                          </ol>
                         <div *ngIf="globalInfoService.login_state==false">
                             <a mdbBtn color="success" outline="true" size="sm" class="waves-light" type="submit"
                                 mdbWavesEffect routerLink="/login">Login</a>
